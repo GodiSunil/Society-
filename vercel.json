@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/service/(.*)",
+      "destination": "/"
+    },
+    {
+      "source": "/event/(.*)",
+      "destination": "/"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
