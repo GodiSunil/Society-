@@ -11,58 +11,58 @@ export interface ExecutiveMember {
 export const executiveMembers: ExecutiveMember[] = [
   {
     id: 1,
-    name: "Mrs. Thomasamma",
+    name: "Ms. S. Thomasamma",
     position: "President",
     image: "/images/team/thomasamma.jpg",
-    bio: "With over 15 years of experience in social work, Mrs. Thomasamma has been instrumental in guiding the organization's vision and mission since 2017.",
-    email: "president@dsp.org"
+    bio: "Nurse by profession, Ms. S. Thomasamma leads the organization with compassion and dedication to serving the poor and needy.",
+    email: "dsociety2005@gmail.com"
   },
   {
     id: 2,
-    name: "Mr. A. Prabhudasu",
-    position: "Founder & Vice President",
+    name: "Mr. A. Sesha Giri Rao",
+    position: "Vice-President",
     image: "/images/team/prabhudasu.jpg",
-    bio: "Co-founder of DSP, Mr. Prabhudasu has been a driving force behind the organization's initiatives since its inception in 2005.",
-    email: "vp@dsp.org"
+    bio: "Advocate by profession, Mr. A. Sesha Giri Rao brings legal expertise to guide the organization's initiatives and ensure compliance.",
+    email: "dsociety2005@gmail.com"
   },
   {
     id: 3,
-    name: "Mrs. Mary Ruby",
-    position: "Project Manager",
-    image: "/images/team/mary.jpg",
-    bio: "Leading various projects since 2018, Mrs. Ruby has been pivotal in implementing DSP's community development programs.",
-    email: "projects@dsp.org"
+    name: "Mr. S. Nageswara Rao",
+    position: "Financial Secretary",
+    image: "/images/team/default.jpg",
+    bio: "Accountant by profession, Mr. S. Nageswara Rao oversees the financial operations and ensures transparency in all financial matters.",
+    email: "dsociety2005@gmail.com"
   },
   {
     id: 4,
-    name: "Mrs. Anitha Kumari",
-    position: "Program Coordinator",
-    image: "/images/team/anitha.jpg",
-    bio: "Specializing in educational initiatives, Mrs. Kumari oversees programs supporting underprivileged children's education.",
-    email: "education@dsp.org"
+    name: "Ms. D. Anitha Kumari",
+    position: "Secretary",
+    image: "/images/team/default.jpg",
+    bio: "Coordinator by role, Ms. D. Anitha Kumari manages the day-to-day operations and coordinates various development programs.",
+    email: "dsociety2005@gmail.com"
   },
   {
     id: 5,
-    name: "Mrs. Yeruva Maria Rani",
-    position: "Women Empowerment Coordinator",
-    image: "/images/team/maria.jpg",
-    bio: "Dedicated to women's welfare, Mrs. Rani leads initiatives for skill development and economic empowerment of women.",
-    email: "women@dsp.org"
+    name: "Ms. K. Sravanthi",
+    position: "Executive Member",
+    image: "/images/team/default.jpg",
+    bio: "Housewife dedicated to social service, Ms. K. Sravanthi contributes to the organization's mission through active participation in community programs.",
+    email: "dsociety2005@gmail.com"
   },
   {
     id: 6,
-    name: "Mrs. Allam Mary",
-    position: "Community Development Officer",
-    image: "/images/team/allam.jpg",
-    bio: "Working closely with rural communities, Mrs. Mary implements sustainable development programs in remote areas.",
-    email: "community@dsp.org"
+    name: "Fr. K. Rayapu Reddy",
+    position: "Executive Member",
+    image: "/images/team/default.jpg",
+    bio: "Priest and Advocate, Fr. K. Rayapu Reddy combines spiritual guidance with legal expertise to support the organization's initiatives.",
+    email: "dsociety2005@gmail.com"
   },
   {
     id: 7,
-    name: "Mrs. Boyapati Mahitha",
-    position: "Healthcare Coordinator",
-    image: "/images/team/mahitha.jpg",
-    bio: "Overseeing health and wellness programs, Mrs. Mahitha ensures access to healthcare for underprivileged communities.",
-    email: "health@dsp.org"
+    name: "Ms. P. Jescintha",
+    position: "Executive Member",
+    image: "/images/team/default.jpg",
+    bio: "Housewife committed to social work, Ms. P. Jescintha actively participates in programs aimed at empowering women and children.",
+    email: "dsociety2005@gmail.com"
   }
 ];

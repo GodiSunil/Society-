@@ -5,25 +5,65 @@ const ExecutiveBody = () => {
   const executiveMembers = [
     {
       id: 1,
-      name: "Mrs. Thomasamma",
+      name: "Ms. S. Thomasamma",
       position: "President",
       image: "/images/ms.thomasamma.jpg",
-      bio: "With over 15 years of experience in social work, Mrs. Thomasamma has been instrumental in guiding the organization's vision and mission since 2017.",
-      email: "president@dsp.org"
+      bio: "Nurse by profession, Ms. S. Thomasamma leads the organization with compassion and dedication to serving the poor and needy.",
+      email: "dsociety2005@gmail.com"
     },
     {
       id: 2,
-      name: "Mr. A. Prabhudasu",
-      position: "Founder & Vice President",
+      name: "Mr. A. Sesha Giri Rao",
+      position: "Vice-President",
       image: "/images/a.prabhudasu.jpg",
-      bio: "Co-founder of DSP, Mr. Prabhudasu has been a driving force behind the organization's initiatives since its inception in 2005.",
-      email: "vp@dsp.org"
+      bio: "Advocate by profession, Mr. A. Sesha Giri Rao brings legal expertise to guide the organization's initiatives and ensure compliance.",
+      email: "dsociety2005@gmail.com"
+    },
+    {
+      id: 3,
+      name: "Mr. S. Nageswara Rao",
+      position: "Financial Secretary",
+      image: "/images/default.jpg",
+      bio: "Accountant by profession, Mr. S. Nageswara Rao oversees the financial operations and ensures transparency in all financial matters.",
+      email: "dsociety2005@gmail.com"
+    },
+    {
+      id: 4,
+      name: "Ms. D. Anitha Kumari",
+      position: "Secretary",
+      image: "/images/default.jpg",
+      bio: "Coordinator by role, Ms. D. Anitha Kumari manages the day-to-day operations and coordinates various development programs.",
+      email: "dsociety2005@gmail.com"
+    },
+    {
+      id: 5,
+      name: "Ms. K. Sravanthi",
+      position: "Executive Member",
+      image: "/images/default.jpg",
+      bio: "Housewife dedicated to social service, Ms. K. Sravanthi contributes to the organization's mission through active participation in community programs.",
+      email: "dsociety2005@gmail.com"
+    },
+    {
+      id: 6,
+      name: "Fr. K. Rayapu Reddy",
+      position: "Executive Member",
+      image: "/images/default.jpg",
+      bio: "Priest and Advocate, Fr. K. Rayapu Reddy combines spiritual guidance with legal expertise to support the organization's initiatives.",
+      email: "dsociety2005@gmail.com"
+    },
+    {
+      id: 7,
+      name: "Ms. P. Jescintha",
+      position: "Executive Member",
+      image: "/images/default.jpg",
+      bio: "Housewife committed to social work, Ms. P. Jescintha actively participates in programs aimed at empowering women and children.",
+      email: "dsociety2005@gmail.com"
     }
   ];
 
   return (
     <Layout>
-      <Breadcrumb title="Executive Body Members" backLink="/about" backText="Back to About Us" />
+      <Breadcrumb title="Executive Body Members" />
       
       <div className="bg-white py-12 sm:py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

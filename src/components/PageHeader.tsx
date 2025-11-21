@@ -12,9 +12,7 @@ type PageHeaderProps = {
 const PageHeader = ({ 
   title, 
   description, 
-  breadcrumbItems, 
-  backLink, 
-  backText = 'Back' 
+  breadcrumbItems
 }: PageHeaderProps) => {
   const location = useLocation();
   
@@ -38,42 +36,32 @@ const PageHeader = ({
           
           {/* Right Side - Breadcrumb */}
           <nav className="flex items-center text-xs text-gray-400 font-['Poppins']">
-            {backLink ? (
-              <Link 
-                to={backLink} 
-                className="flex items-center text-gray-400 hover:text-gray-200 transition-colors duration-200 font-normal text-xs"
-              >
-                <ChevronRight size={12} className="rotate-180 mr-1 text-gray-400" />
-                {backText}
-              </Link>
-            ) : (
-              <div className="flex items-center">
-                {breadcrumbs.map((item, index) => (
-                  <div key={item.path} className="flex items-center">
-                    {index > 0 && (
-                      <ChevronRight 
-                        size={12} 
-                        className="mx-1.5 text-gray-500" 
-                        aria-hidden="true"
-                      />
-                    )}
-                    {index === breadcrumbs.length - 1 ? (
-                      <span className="text-gray-300 font-medium text-xs">
-                        {item.name}
-                      </span>
-                    ) : (
-                      <Link 
-                        to={item.path} 
-                        className="text-gray-400 hover:text-gray-200 transition-colors duration-200 font-normal text-xs"
-                        aria-current={index === breadcrumbs.length - 1 ? 'page' : undefined}
-                      >
-                        {item.name}
-                      </Link>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
+            <div className="flex items-center">
+              {breadcrumbs.map((item, index) => (
+                <div key={item.path} className="flex items-center">
+                  {index > 0 && (
+                    <ChevronRight 
+                      size={12} 
+                      className="mx-1.5 text-gray-500" 
+                      aria-hidden="true"
+                    />
+                  )}
+                  {index === breadcrumbs.length - 1 ? (
+                    <span className="text-gray-300 font-medium text-xs">
+                      {item.name}
+                    </span>
+                  ) : (
+                    <Link 
+                      to={item.path} 
+                      className="text-gray-400 hover:text-gray-200 transition-colors duration-200 font-normal text-xs"
+                      aria-current={index === breadcrumbs.length - 1 ? 'page' : undefined}
+                    >
+                      {item.name}
+                    </Link>
+                  )}
+                </div>
+              ))}
+            </div>
           </nav>
         </div>
       </div>

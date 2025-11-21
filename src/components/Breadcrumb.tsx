@@ -25,37 +25,9 @@ const Breadcrumb = ({
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center">
           {/* Page Title */}
           <div className="mb-2 md:mb-0">
-            {backLink ? (
-              <div className="flex items-center">
-                <Link 
-                  to={backLink} 
-                  className="flex items-center text-gray-300 hover:text-white mr-4 transition-colors duration-200 font-medium"
-                >
-                  <svg 
-                    className="w-4 h-4 mr-1" 
-                    fill="none" 
-                    stroke="currentColor" 
-                    viewBox="0 0 24 24" 
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path 
-                      strokeLinecap="round" 
-                      strokeLinejoin="round" 
-                      strokeWidth={2} 
-                      d="M15 19l-7-7 7-7" 
-                    />
-                  </svg>
-                  {backText}
-                </Link>
-                <h1 className="text-2xl md:text-3xl font-bold font-sans">
-                  {pageTitle}
-                </h1>
-              </div>
-            ) : (
-              <h1 className="text-2xl md:text-3xl font-bold font-sans">
-                {pageTitle}
-              </h1>
-            )}
+            <h1 className="text-2xl md:text-3xl font-bold font-sans">
+              {pageTitle}
+            </h1>
           </div>
           
           {/* Breadcrumb Navigation */}

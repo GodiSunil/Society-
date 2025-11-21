@@ -8,14 +8,14 @@ const About = () => {
   const timelineEvents = [
     {
       year: "2005",
-      description: "Development Society for Poor (DSP) was started by Rev. Fr. K. Rayapu Reddy & Mr. A. Prabhudasu with Registration Number: 876/2005 dated 29th December 2005",
+      description: "Development Society for Poor (DSP) was started by Rev. Fr. K. Rayapu Reddy & Mr. A. Prabhudasu with Registration Number: 876/2005 dated 29th December 2005. Since 2005 social work mainly relief and charitable works were undertaken by a part-time person director.",
       icon: <Award className="w-6 h-6" />,
       bgColor: 'bg-[#4e73df]',
       textColor: 'text-white'
     },
     {
       year: "2014",
-      description: "On March 14, 2014 DSP started \"Archangel's Home for the Aged\" at Rentachintala with Mr. Satish Kumar Reddy in a rented building to cater the needs of the destitute elderly.",
+      description: "On March 14, 2014 DSP started \"Archangel's Home for the Aged\" at Rentachintala with Mr. Satish Kumar Reddy in a rented building to cater the needs of the destitute elderly. It was converted into a full time responsibility.",
       icon: <Home className="w-6 h-6" />,
       bgColor: 'bg-[#1cc88a]',
       textColor: 'text-white'
@@ -76,9 +76,13 @@ const About = () => {
             <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">
               Development Society for Poor (DSP)
             </h2>
+            <p className="text-gray-700 leading-relaxed mb-6">
+              Rentachintal Post & Mandal, Guntur 522 421, Andhra Pradesh, India
+            </p>
             <p className="text-gray-700 leading-relaxed">
-              A social service organization working for the socio-economic development of the poor, 
-              especially for the Scheduled Tribe (ST) and Backward communities, irrespective of their 
+              A social service organization working in the district of Guntur, in the State of Andhra Pradesh, South India. 
+              Its main thrust is working towards the integral rural development. All its programmes are geared towards the 
+              welfare and empowerment of all sections of people particularly the poor and the marginalised irrespective of 
               caste, creed and religion.
             </p>
           </motion.section>
@@ -139,14 +143,30 @@ const About = () => {
             <h2 className="text-2xl font-bold text-gray-900 mb-6 font-serif">Our Commitment</h2>
             <div className="space-y-6 text-gray-700 leading-relaxed">
               <p>
-                Development Society for Poor (DSP) is committed to the development of the socially marginalized communities 
-                and Backward Class communities. We focus on the rural and urban poor, agricultural labourers, marginal farmers, 
-                women and children, particularly the girl children.
+                Goaded by Divine Spirit and Social will, expressed in unmistakable terms at and with full commitment, 
+                accepted the intention of the regulations of the society with regard to rendering loving service to the 
+                poor and the needy to help themselves in every possible way. For this purpose Development Society for Poor 
+                (DSP) came into being in 2005 with the following aims and objectives; to perform acts of charity and render 
+                service to those in need, irrespective of caste, race or religion" and "to engage in social service activities 
+                aimed at improving the economic, educational and social conditions of the poor including farmers, working 
+                classes or persons of whatever occupation".
               </p>
               <p>
-                We are dedicated to people's participatory development processes, ensuring that those concerned and affected 
-                are involved in the entire process of project identification, development, execution, monitoring and evaluation. 
-                Our projects adopt a bottom-up approach and are evolved at the community level.
+                Development Society for Poor was established based on the social teaching of India with the fundamental orientation:
+              </p>
+              <ul className="list-disc pl-6 space-y-2 mb-4">
+                <li>To support the concept of integral development through the efforts of the people to attain their economic, 
+                social as well as their cultural and spiritual aspirations.</li>
+                <li>To fight together, in line with this approach, against under-development and injustice in all their forms, 
+                in their causes and in their consequence.</li>
+                <li>To express solidarity with the marginalized groups and peoples, without distinction of race, nationality or 
+                religious conviction, landless agricultural labourers, empowerment of women and girl children, traditional 
+                handloom weavers, slum dwellers, street children to work for their holistic development.</li>
+              </ul>
+              <p>
+                Since 2005 social work mainly relief and charitable works were undertaken by a part-time person director. 
+                Development Society for Poor was registered in 2005. It was converted into a full time responsibility with 
+                the stating of Archangel's Home for the Aged at Rentachintala in 2014.
               </p>
             </div>
           </motion.section>

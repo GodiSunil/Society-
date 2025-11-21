@@ -6,38 +6,38 @@ const VisionMission = () => {
   const visionMissionData = {
     vision: {
       title: "Our Vision",
-      description: "To create a just, equitable, and sustainable society where every individual, especially the underprivileged, can live with dignity, access quality education, healthcare, and opportunities for holistic development.",
+      description: "To empower the rural poor communities, the scheduled caste, the scheduled tribe and the backward class, irrespective of caste, creed and religion, through a process of awakening critical consciousness, and motivating collective action; in order that they would eventually transform themselves, the community and the society at large, into a place where justice, human dignity, peace and equality reign for the Development of the People.",
       icon: <Lightbulb className="w-16 h-16 sm:w-14 sm:h-14 text-white mb-4" />,
       bgColor: "bg-gradient-to-br from-blue-600 to-blue-700"
     },
     mission: {
       title: "Our Mission",
-      description: "To empower marginalized communities through education, healthcare, skill development, and sustainable livelihood programs, fostering self-reliance and social transformation.",
+      description: "To perform acts of charity and render service to those in need especially the poor, the distressed and the backward in the community irrespective of caste, race, creed or religion. To engage in Social Service activities aimed at improving the economic, educational and social conditions of the poor including farmers, working classes or persons of whatever occupation. To empower the poor urban and rural communities, the scheduled castes, scheduled tribes and backward class, irrespective of caste, creed and religion.",
       icon: <Target className="w-16 h-16 sm:w-14 sm:h-14 text-white mb-4" />,
       bgColor: "bg-gradient-to-br from-green-500 to-green-600"
     },
     values: [
       {
-        title: "Compassion",
-        description: "We serve with empathy, understanding, and respect for all individuals.",
+        title: "Integral Development",
+        description: "Support the concept of integral development through the efforts of the people to attain their economic, social as well as their cultural and spiritual aspirations.",
         icon: <Heart className="w-12 h-12 sm:w-10 sm:h-10 text-white mb-3" />,
         bgColor: "bg-gradient-to-br from-cyan-500 to-cyan-600"
       },
       {
-        title: "Integrity",
-        description: "We maintain the highest standards of honesty and ethical conduct in all our actions.",
+        title: "Social Justice",
+        description: "Fight together against under-development and injustice in all their forms, in their causes and in their consequence.",
         icon: <Shield className="w-12 h-12 sm:w-10 sm:h-10 text-white mb-3" />,
         bgColor: "bg-gradient-to-br from-yellow-500 to-yellow-600"
       },
       {
-        title: "Inclusivity",
-        description: "We believe in equal opportunities for all, regardless of caste, creed, gender, or economic status.",
+        title: "Solidarity",
+        description: "Express solidarity with the marginalized groups and peoples, without distinction of race, nationality or religious conviction.",
         icon: <Users className="w-12 h-12 sm:w-10 sm:h-10 text-white mb-3" />,
         bgColor: "bg-gradient-to-br from-red-500 to-red-600"
       },
       {
-        title: "Service",
-        description: "We are committed to selfless service for the betterment of society.",
+        title: "Participatory Development",
+        description: "People concerned and affected initiate/are involved in the entire process of project identification, development, execution and monitoring.",
         icon: <HandHeart className="w-12 h-12 sm:w-10 sm:h-10 text-white mb-3" />,
         bgColor: "bg-gradient-to-br from-gray-600 to-gray-700"
       }
@@ -47,7 +47,7 @@ const VisionMission = () => {
   return (
     <Layout>
       {/* Breadcrumb with dark background */}
-      <Breadcrumb title="Vision and Mission" backLink="/about" backText="Back to About Us" />
+      <Breadcrumb title="Vision and Mission" />
 
       {/* Vision & Mission Section */}
       <section className="py-12 sm:py-16 bg-white">
@@ -122,22 +122,22 @@ const VisionMission = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {/* Lives Impacted */}
               <div className="bg-gradient-to-br from-[#4e73df] to-[#224abe] p-6 rounded-lg shadow-md text-white text-center transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <div className="text-4xl font-bold mb-2">5000+</div>
-                <p className="text-white/90">Lives Impacted</p>
+                <div className="text-4xl font-bold mb-2">729</div>
+                <p className="text-white/90">Villages Covered</p>
                 <div className="w-16 h-1 bg-white/30 mx-auto mt-4 rounded-full"></div>
               </div>
               
               {/* Years of Service */}
               <div className="bg-gradient-to-br from-[#1cc88a] to-[#13855c] p-6 rounded-lg shadow-md text-white text-center transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <div className="text-4xl font-bold mb-2">15+</div>
+                <div className="text-4xl font-bold mb-2">18+</div>
                 <p className="text-white/90">Years of Service</p>
                 <div className="w-16 h-1 bg-white/30 mx-auto mt-4 rounded-full"></div>
               </div>
               
               {/* Communities Served */}
               <div className="bg-gradient-to-br from-[#36b9cc] to-[#258391] p-6 rounded-lg shadow-md text-white text-center transform transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
-                <div className="text-4xl font-bold mb-2">50+</div>
-                <p className="text-white/90">Communities Served</p>
+                <div className="text-4xl font-bold mb-2">10,268</div>
+                <p className="text-white/90">Sq. Km Area</p>
                 <div className="w-16 h-1 bg-white/30 mx-auto mt-4 rounded-full"></div>
               </div>
             </div>

@@ -39,8 +39,6 @@ export const EventTemplate = ({ event }: EventTemplateProps) => {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <PageHeader 
               title={event.title}
-              backLink="/events"
-              backText="Back to Events"
             />
           </div>
         </div>

@@ -256,6 +256,46 @@ const Index = () => {
       {/* Hero Section */}
       <HeroSection slides={heroSlides} />
 
+      {/* Introduction Section */}
+      <section className="py-16 bg-gradient-to-r from-orange-50 to-amber-50">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">Development Society for Poor (DSP)</h2>
+            <p className="text-gray-700 text-lg mb-6 leading-relaxed">
+              The Executive Committee and Staff of DSP developed this strategic plan to lay a five-year roadmap for support, 
+              services and organizational development. The Executive Committee and staff will review the progress and update 
+              the plan annually.
+            </p>
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              This plan was developed with broad involvement and guidance from the Executive Committee and staff for a critical 
+              review, re-orient and re-dedicate to change the faces of poverty and usher in a more dignified manner of living 
+              to the suffering poor.
+            </p>
+            <div className="bg-white rounded-xl p-6 shadow-md text-left">
+              <h3 className="text-xl font-bold text-gray-800 mb-4">Our Strategic Direction</h3>
+              <ul className="space-y-3">
+                <li className="flex items-start">
+                  <span className="text-[#f15a24] mr-2">•</span>
+                  <span>To review and deepen its existing direct supports and services over time to ensure that they are state-of-the art for working effectively with the poor and needy.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#f15a24] mr-2">•</span>
+                  <span>To further assess community needs to identify gaps or needed shifts in service delivery. This assessment will serve as the basis for expanding or adding new services.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#f15a24] mr-2">•</span>
+                  <span>To take a leadership role in working with a range of NGOs to identify and meet the needs of the poor and the needy.</span>
+                </li>
+                <li className="flex items-start">
+                  <span className="text-[#f15a24] mr-2">•</span>
+                  <span>To explore the feasibility of expanding the organization's visibility and impact.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Our Services Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">

@@ -1,12 +1,12 @@
-
 import { useState } from 'react';
 import { Phone, Mail, Facebook, Youtube, Search, Menu, X, ChevronDown } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const location = useLocation();
 
   const toggleDropdown = (dropdown: string) => {
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
@@ -70,7 +70,7 @@ const Header = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 font-medium">
-              <Link to="/" className="text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium">
+              <Link to="/" className={`text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium ${location.pathname === '/' ? 'text-[#f15a24]' : ''}`}>
                 HOME
               </Link>
               
@@ -89,7 +89,7 @@ const Header = () => {
                 </div>
               </div>
 
-              <Link to="/services" className="text-[#f15a24] hover:text-[#d14619] transition-colors duration-200 font-medium">
+              <Link to="/services" className={`text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium ${location.pathname === '/services' || location.pathname.startsWith('/service/') ? 'text-[#f15a24]' : ''}`}>
                 OUR SERVICES
               </Link>
 
@@ -104,11 +104,11 @@ const Header = () => {
                 </div>
               </div>
 
-              <Link to="/gallery" className="text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium">
+              <Link to="/gallery" className={`text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium ${location.pathname === '/gallery' ? 'text-[#f15a24]' : ''}`}>
                 GALLERY
               </Link>
               
-              <Link to="/contact" className="text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium">
+              <Link to="/contact" className={`text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium ${location.pathname === '/contact' ? 'text-[#f15a24]' : ''}`}>
                 CONTACT
               </Link>
               
@@ -163,7 +163,7 @@ const Header = () => {
             <div className="py-4 space-y-1">
               <Link 
                 to="/" 
-                className="block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200"
+                className={`block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 ${location.pathname === '/' ? 'text-[#f15a24]' : ''}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 HOME
@@ -191,7 +191,7 @@ const Header = () => {
 
               <Link 
                 to="/services" 
-                className="block px-6 py-3 text-[#f15a24] hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100"
+                className={`block px-6 py-3 hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100 ${location.pathname === '/services' || location.pathname.startsWith('/service/') ? 'text-[#f15a24]' : 'text-gray-800'}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 OUR SERVICES
@@ -215,7 +215,7 @@ const Header = () => {
 
               <Link 
                 to="/gallery" 
-                className="block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100"
+                className={`block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100 ${location.pathname === '/gallery' ? 'text-[#f15a24]' : ''}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 GALLERY
@@ -223,7 +223,7 @@ const Header = () => {
               
               <Link 
                 to="/contact" 
-                className="block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100"
+                className={`block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100 ${location.pathname === '/contact' ? 'text-[#f15a24]' : ''}`}
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 CONTACT

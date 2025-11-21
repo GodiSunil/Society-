@@ -60,9 +60,10 @@ const Contact = () => {
                   <div>
                     <h3 className="font-semibold text-lg text-gray-800 mb-1">Our Location</h3>
                     <address className="not-italic text-gray-600">
-                      Development Society for Poor<br />
-                      Rentachintala, Andhra Pradesh<br />
-                      India
+                      Development Society for Poor (DSP)<br />
+                      Rentachintal Post & Mandal<br />
+                      Guntur 522 421<br />
+                      Andhra Pradesh, India
                     </address>
                   </div>
                 </div>

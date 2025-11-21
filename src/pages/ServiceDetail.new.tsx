@@ -51,8 +51,6 @@ const ServiceDetail = () => {
       <Layout>
         <PageHeader 
           title="Service Not Found"
-          backText="Back to Services"
-          backLink="/services"
         />
         <div className="flex flex-col items-center justify-center min-h-[50vh]">
           <p className="text-gray-600 mb-6">The requested service could not be found.</p>
@@ -74,8 +72,6 @@ const ServiceDetail = () => {
         <PageHeader 
           title={service.title}
           description={service.description}
-          backText="Back to Services"
-          backLink="/services"
         />
       </div>
 
