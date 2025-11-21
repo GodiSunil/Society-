@@ -59,7 +59,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 mt-1 mr-2 flex-shrink-0" />
-                <span>123 Charity Street, City, State, PIN - 500001, India</span>
+                <span>Rentachintal Post & Mandal, Guntur 522 421, Andhra Pradesh, India</span>
               </li>
               <li className="flex items-center">
                 <Mail className="w-5 h-5 mr-2" />
