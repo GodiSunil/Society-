@@ -63,7 +63,7 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Mail className="w-5 h-5 mr-2" />
-                <a href="mailto:info@dsp.org" className="hover:underline">info@dsp.org</a>
+                <a href="mailto:dsociety2005@gmail.com" className="hover:underline">dsociety2005@gmail.com</a>
               </li>
               <li className="flex items-center">
                 <Phone className="w-5 h-5 mr-2" />
