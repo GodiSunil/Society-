@@ -59,7 +59,7 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin className="w-5 h-5 mt-1 mr-2 flex-shrink-0" />
-                <span>Rentachintal Post & Mandal, Guntur 522 421, Andhra Pradesh, India</span>
+                <span>Rentachintal Post & Mandal, palnadu 522 421, Andhra Pradesh, India</span>
               </li>
               <li className="flex items-center">
                 <Mail className="w-5 h-5 mr-2" />
@@ -70,24 +70,6 @@ const Footer = () => {
                 <a href="tel:+919876543210" className="hover:underline">+91 98765 43210</a>
               </li>
             </ul>
-          </div>
-        </div>
-        
-        {/* Newsletter */}
-        <div className="bg-white/10 rounded-lg p-6 mb-8">
-          <div className="max-w-3xl mx-auto">
-            <h3 className="text-xl font-bold mb-2 text-center">Subscribe to Our Newsletter</h3>
-            <p className="text-white/90 text-center mb-4">Stay updated with our latest news and events</p>
-            <div className="flex flex-col sm:flex-row gap-2 max-w-lg mx-auto">
-              <input 
-                type="email" 
-                placeholder="Enter your email" 
-                className="flex-1 px-4 py-2 rounded text-gray-800 focus:outline-none focus:ring-2 focus:ring-white/50"
-              />
-              <Button className="bg-gray-800 hover:bg-gray-900 text-white px-6 py-2 whitespace-nowrap">
-                Subscribe
-              </Button>
-            </div>
           </div>
         </div>
         

@@ -1,5 +1,5 @@
 import { Project } from '@/types/project';
-import { upcomingProjects, currentProjects, completedProjects } from '@/data/projects';
+import { currentProjects, completedProjects } from '@/data/projects';
 import { Card, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { ArrowRight } from 'lucide-react';

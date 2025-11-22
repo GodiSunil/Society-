@@ -14,7 +14,6 @@ export const getPageTitle = (pathname: string): string => {
     'audit-reports': 'Audit Reports',
     'our-services': 'Our Services',
     'current-projects': 'Current Projects',
-    'upcoming-projects': 'Upcoming Projects',
     'completed-projects': 'Completed Projects',
     'gallery': 'Gallery',
     'contact': 'Contact',

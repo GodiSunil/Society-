@@ -1,52 +1,35 @@
 import Layout from '@/components/Layout';
 import Breadcrumb from '@/components/Breadcrumb';
 import { FileText, Download } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const AnnualReports = () => {
   const reports = [
     {
-      year: 2023,
-      title: 'Annual Report 2022-2023',
-      description: 'A comprehensive overview of our activities, financials, and impact from April 2022 to March 2023.',
-      fileSize: '2.4 MB',
+      year: '2024-2025',
+      title: 'Annual Report 2024-2025',
+      description: 'Comprehensive overview of our educational programs, women development initiatives, and community projects for the period 2024-2025.',
+      fileSize: '3.2 MB',
       fileType: 'PDF',
-      downloadLink: '/reports/annual-report-2023.pdf',
+      downloadLink: '/reports/annual-report-2024-2025.pdf',
       bgColor: 'bg-[#4e73df]',
       textColor: 'text-white',
-      icon: <FileText className="w-6 h-6" />
+      icon: <FileText className="w-6 h-6" />,
+      hasDetailedView: true,
+      viewReportLink: '/annual-report/2024-2025'
     },
     {
-      year: 2022,
-      title: 'Annual Report 2021-2022',
-      description: 'Highlights of our achievements, financial statements, and future goals for the fiscal year 2021-2022.',
-      fileSize: '2.1 MB',
+      year: '2018-2022',
+      title: 'Annual Report 2018-2022',
+      description: 'Consolidated report covering our achievements, challenges, and financial performance from 2018 to 2022.',
+      fileSize: '4.5 MB',
       fileType: 'PDF',
-      downloadLink: '/reports/annual-report-2022.pdf',
+      downloadLink: '/reports/annual-report-2018-2022.pdf',
       bgColor: 'bg-[#1cc88a]',
       textColor: 'text-white',
-      icon: <FileText className="w-6 h-6" />
-    },
-    {
-      year: 2021,
-      title: 'Annual Report 2020-2021',
-      description: 'Documenting our journey, challenges, and successes during the unprecedented times of the pandemic.',
-      fileSize: '1.9 MB',
-      fileType: 'PDF',
-      downloadLink: '/reports/annual-report-2021.pdf',
-      bgColor: 'bg-[#f6c23e]',
-      textColor: 'text-white',
-      icon: <FileText className="w-6 h-6" />
-    },
-    {
-      year: 2020,
-      title: 'Annual Report 2019-2020',
-      description: 'A year of growth and expansion in our efforts to serve the underprivileged communities.',
-      fileSize: '1.8 MB',
-      fileType: 'PDF',
-      downloadLink: '/reports/annual-report-2020.pdf',
-      bgColor: 'bg-[#e74a3b]',
-      textColor: 'text-white',
-      icon: <FileText className="w-6 h-6" />
+      icon: <FileText className="w-6 h-6" />,
+      hasDetailedView: true,
+      viewReportLink: '/annual-report/2018-2022'
     }
   ];
 
@@ -83,14 +66,34 @@ const AnnualReports = () => {
                     <span>File: {report.fileType}</span>
                     <span>{report.fileSize}</span>
                   </div>
-                  <a
-                    href={report.downloadLink}
-                    className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#f15a24] hover:bg-[#d14619] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f15a24]"
-                    download
-                  >
-                    <Download className="w-4 h-4" />
-                    Download Report
-                  </a>
+                  
+                  {report.hasDetailedView ? (
+                    <div className="flex flex-col gap-2">
+                      <a
+                        href={report.downloadLink}
+                        className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#f15a24] hover:bg-[#d14619] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f15a24]"
+                        download
+                      >
+                        <Download className="w-4 h-4" />
+                        Download PDF
+                      </a>
+                      <Link
+                        to={report.viewReportLink || "/annual-report/detail"}
+                        className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f15a24]"
+                      >
+                        View Report
+                      </Link>
+                    </div>
+                  ) : (
+                    <a
+                      href={report.downloadLink}
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#f15a24] hover:bg-[#d14619] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f15a24]"
+                      download
+                    >
+                      <Download className="w-4 h-4" />
+                      Download Report
+                    </a>
+                  )}
                 </div>
               </div>
             ))}

@@ -7,7 +7,7 @@ export interface Project {
   startDate: string;
   endDate?: string;
   beneficiaries: string;
-  status: 'upcoming' | 'active' | 'completed';
+  status: 'active' | 'completed';
   image: string;
   gallery?: string[];
   impact?: string[];

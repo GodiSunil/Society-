@@ -37,19 +37,6 @@ const Header = () => {
                 <Mail size={14} className="flex-shrink-0" />
                 <span>dsociety2005@gmail.com</span>
               </a>
-              
-              <div className="flex items-center gap-3 border-l border-white/20 pl-4">
-                <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" 
-                   className="hover:text-white/80 transition-colors flex items-center gap-1" 
-                   aria-label="Facebook">
-                  <Facebook size={16} className="w-4 h-4" />
-                </a>
-                <a href="https://youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" 
-                   className="hover:text-white/80 transition-colors flex items-center gap-1" 
-                   aria-label="YouTube">
-                  <Youtube size={16} className="w-4 h-4" />
-                </a>
-              </div>
             </div>
           </div>
         </div>
@@ -94,12 +81,11 @@ const Header = () => {
               </Link>
 
               <div className="relative group">
-                <button className={`flex items-center text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium ${['/current-projects', '/upcoming-projects', '/completed-projects'].includes(location.pathname) ? 'text-[#f15a24] border-b-2 border-[#f15a24]' : ''}`}>
+                <button className={`flex items-center text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium ${['/current-projects', '/completed-projects'].includes(location.pathname) ? 'text-[#f15a24] border-b-2 border-[#f15a24]' : ''}`}>
                   PROGRAMMES <ChevronDown size={16} className="ml-1" />
                 </button>
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
                   <Link to="/current-projects" className={`block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150 ${location.pathname === '/current-projects' ? 'text-[#f15a24] font-bold' : ''}`}>Current Projects</Link>
-                  <Link to="/upcoming-projects" className={`block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150 ${location.pathname === '/upcoming-projects' ? 'text-[#f15a24] font-bold' : ''}`}>Upcoming Projects</Link>
                   <Link to="/completed-projects" className={`block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150 ${location.pathname === '/completed-projects' ? 'text-[#f15a24] font-bold' : ''}`}>Completed Projects</Link>
                 </div>
               </div>
@@ -145,18 +131,6 @@ const Header = () => {
                   <Mail size={16} />
                   <a href="mailto:dsociety2005@gmail.com" className="hover:underline">dsociety2005@gmail.com</a>
                 </div>
-                <div className="flex items-center gap-4 pt-2">
-                  <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" 
-                     className="hover:text-white/80 transition-colors" 
-                     aria-label="Facebook">
-                    <Facebook size={20} />
-                  </a>
-                  <a href="https://youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" 
-                     className="hover:text-white/80 transition-colors" 
-                     aria-label="YouTube">
-                    <Youtube size={20} />
-                  </a>
-                </div>
               </div>
             </div>
             
@@ -200,14 +174,13 @@ const Header = () => {
               <div className="border-t border-gray-100">
                 <button
                   onClick={() => toggleDropdown('programmes')}
-                  className={`flex items-center justify-between w-full px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 text-left ${['/current-projects', '/upcoming-projects', '/completed-projects'].includes(location.pathname) ? 'text-[#f15a24] font-bold' : ''}`}
+                  className={`flex items-center justify-between w-full px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 text-left ${['/current-projects', '/completed-projects'].includes(location.pathname) ? 'text-[#f15a24] font-bold' : ''}`}
                 >
                   PROGRAMMES <ChevronDown size={16} className={`transition-transform duration-200 ${openDropdown === 'programmes' ? 'rotate-180' : ''}`} />
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${openDropdown === 'programmes' ? 'max-h-96' : 'max-h-0'}`}>
                   <div className="pl-8 space-y-1 bg-gray-50">
                     <Link to="/current-projects" className={`block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150 ${location.pathname === '/current-projects' ? 'text-[#f15a24] font-bold' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Current Projects</Link>
-                    <Link to="/upcoming-projects" className={`block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150 ${location.pathname === '/upcoming-projects' ? 'text-[#f15a24] font-bold' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Upcoming Projects</Link>
                     <Link to="/completed-projects" className={`block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150 ${location.pathname === '/completed-projects' ? 'text-[#f15a24] font-bold' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Completed Projects</Link>
                   </div>
                 </div>

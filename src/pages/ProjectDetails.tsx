@@ -1,6 +1,5 @@
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Button } from '@/components/ui/button';
 import { 
   ArrowLeft, 
   Calendar, 
@@ -8,17 +7,16 @@ import {
   MapPin, 
   CheckCircle, 
   DollarSign, 
-  Clock, 
-  ArrowRight, 
-  Info, 
-  Heart, 
+  Clock,
+  ArrowRight,
+  Heart,
   Mail, 
   Handshake, 
   Building2 
 } from 'lucide-react';
 import Layout from '@/components/Layout';
 
-import { getProjectById, upcomingProjects, currentProjects, completedProjects } from '@/data/projects';
+import { getProjectById, currentProjects, completedProjects } from '@/data/projects';
 import { useEffect, useState } from 'react';
 import { Project } from '@/data/projects';
 import { cn } from '@/lib/utils';
@@ -45,7 +43,6 @@ const ProjectDetails = () => {
         
         // Find related projects (same status, excluding current project)
         const related = [
-          ...(projectData.status === 'upcoming' ? upcomingProjects : []),
           ...(projectData.status === 'active' ? currentProjects : []),
           ...(projectData.status === 'completed' ? completedProjects : [])
         ].filter(p => p.id !== id).slice(0, 3);
@@ -92,12 +89,6 @@ const ProjectDetails = () => {
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Current Projects
               </Link>
-              <Link 
-                to="/upcoming-projects" 
-                className="inline-flex items-center justify-center px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors"
-              >
-                Upcoming Projects
-              </Link>
             </div>
           </div>
         </div>
@@ -106,13 +97,11 @@ const ProjectDetails = () => {
   }
 
   // Determine the back link based on project status
-  const backLink = project.status === 'upcoming' 
-    ? '/upcoming-projects' 
-    : project.status === 'active' 
-      ? '/current-projects' 
-      : '/completed-projects';
-      
-  const backText = `Back to ${project.status === 'upcoming' ? 'Upcoming' : project.status === 'active' ? 'Current' : 'Completed'} Projects`;
+  const backLink = project.status === 'active' 
+    ? '/current-projects' 
+    : '/completed-projects';
+    
+  const backText = `Back to ${project.status === 'active' ? 'Current' : 'Completed'} Projects`;
 
   return (
     <Layout fullWidth className="px-0 bg-gray-50">
@@ -209,15 +198,15 @@ const ProjectDetails = () => {
                 )}
               </motion.div>
               
-              {project.status === 'upcoming' && (
+              {project.status === 'active' && (
                 <motion.div 
-                  className="mt-4 flex items-center text-blue-600 bg-blue-50 px-4 py-2 rounded-lg w-fit"
+                  className="mt-4 flex items-center text-green-600 bg-green-50 px-4 py-2 rounded-lg w-fit"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.4 }}
                 >
-                  <Clock className="w-5 h-5 mr-2" />
-                  <span>Project Starting Soon</span>
+                  <CheckCircle className="w-5 h-5 mr-2" />
+                  <span>Project In Progress</span>
                 </motion.div>
               )}
             </div>
@@ -239,11 +228,11 @@ const ProjectDetails = () => {
                 }}
                 loading="lazy"
               />
-              {project.status === 'upcoming' && (
-                <div className="bg-blue-600 text-white text-center py-2 px-4">
+              {project.status === 'active' && (
+                <div className="bg-green-600 text-white text-center py-2 px-4">
                   <div className="flex items-center justify-center">
-                    <Clock className="w-5 h-5 mr-2" />
-                    <span>Starting {new Date(project.startDate).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}</span>
+                    <CheckCircle className="w-5 h-5 mr-2" />
+                    <span>In Progress</span>
                   </div>
                 </div>
               )}
@@ -288,7 +277,7 @@ const ProjectDetails = () => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.3, delay: 0.6 + (index * 0.1) }}
                           >
-                            <CheckCircle className="w-5 h-5 text-orange-500 mt-0.5 mr-2 flex-shrink-0" />
+                            <CheckCircle className="w-5 h-5 mr-2 mt-0.5 text-orange-500 flex-shrink-0" />
                             <span className="text-gray-700">{item}</span>
                           </motion.li>
                         ))}
@@ -298,139 +287,69 @@ const ProjectDetails = () => {
                 </div>
               </motion.div>
               
-              <motion.div
+              <motion.div 
+                className="lg:col-span-1"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="space-y-6"
               >
-                <motion.div 
-                  className="bg-white p-6 rounded-xl sticky top-6 shadow-lg border border-gray-100"
-                  whileHover={{ 
-                    y: -4,
-                    boxShadow: '0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1)'
-                  }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <h3 className="text-xl font-semibold text-gray-900 mb-6 flex items-center">
-                    <Info className="w-5 h-5 mr-2 text-orange-500" />
-                    Project Details
-                  </h3>
-                  
-                  <div className="space-y-5">
-                    <motion.div 
-                      className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                      whileHover={{ x: 2 }}
-                    >
-                      <h4 className="text-sm font-medium text-gray-500 mb-1">Location</h4>
-                      <p className="text-gray-900 flex items-start">
-                        <MapPin className="w-4 h-4 text-orange-500 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>{project.location}</span>
+                <div className="bg-gray-50 rounded-xl p-6 mb-8">
+                  <h3 className="text-xl font-bold text-gray-900 mb-4">Project Details</h3>
+                  <div className="space-y-4">
+                    <div>
+                      <h4 className="font-medium text-gray-900">Start Date</h4>
+                      <p className="text-gray-600">
+                        {new Date(project.startDate).toLocaleDateString('en-US', { 
+                          year: 'numeric', 
+                          month: 'long', 
+                          day: 'numeric' 
+                        })}
                       </p>
-                    </motion.div>
-                    
-                    <motion.div 
-                      className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                      whileHover={{ x: 2 }}
-                    >
-                      <h4 className="text-sm font-medium text-gray-500 mb-1">Duration</h4>
-                      <p className="text-gray-900 flex items-start">
-                        <Calendar className="w-4 h-4 text-orange-500 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>
-                          {new Date(project.startDate).toLocaleDateString('en-US', { 
+                    </div>
+                    {project.endDate && (
+                      <div>
+                        <h4 className="font-medium text-gray-900">End Date</h4>
+                        <p className="text-gray-600">
+                          {new Date(project.endDate).toLocaleDateString('en-US', { 
                             year: 'numeric', 
-                            month: 'short',
-                            day: 'numeric'
+                            month: 'long', 
+                            day: 'numeric' 
                           })}
-                          {project.endDate && (
-                            <>
-                              <br className="md:hidden" />
-                              <span className="hidden md:inline"> - </span>
-                              {new Date(project.endDate).toLocaleDateString('en-US', { 
-                                year: 'numeric', 
-                                month: 'short',
-                                day: 'numeric'
-                              })}
-                            </>
-                          )}
-                        </span>
-                      </p>
-                    </motion.div>
-                    
-                    <motion.div 
-                      className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                      whileHover={{ x: 2 }}
-                    >
-                      <h4 className="text-sm font-medium text-gray-500 mb-1">Beneficiaries</h4>
-                      <p className="text-gray-900 flex items-start">
-                        <Users className="w-4 h-4 text-orange-500 mr-2 mt-0.5 flex-shrink-0" />
-                        <span>{project.beneficiaries}</span>
-                      </p>
-                    </motion.div>
-                    
-                    {project.budget && (
-                      <motion.div 
-                        className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                        whileHover={{ x: 2 }}
-                      >
-                        <h4 className="text-sm font-medium text-gray-500 mb-1">Budget</h4>
-                        <p className="text-gray-900 flex items-start">
-                          <DollarSign className="w-4 h-4 text-orange-500 mr-2 mt-0.5 flex-shrink-0" />
-                          <span>{project.budget}</span>
                         </p>
-                      </motion.div>
+                      </div>
                     )}
-                    
-                    <motion.div 
-                      className="p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
-                      whileHover={{ x: 2 }}
-                    >
-                      <h4 className="text-sm font-medium text-gray-500 mb-1">Status</h4>
-                      <p className="text-gray-900 flex items-center">
-                        {project.status === 'active' ? (
-                          <span className="flex items-center">
-                            <span className="w-2.5 h-2.5 rounded-full bg-green-500 mr-2 animate-pulse"></span>
-                            <span>In Progress</span>
-                          </span>
-                        ) : project.status === 'upcoming' ? (
-                          <span className="flex items-center">
-                            <span className="w-2.5 h-2.5 rounded-full bg-blue-500 mr-2"></span>
-                            <span>Upcoming</span>
-                          </span>
-                        ) : (
-                          <span className="flex items-center">
-                            <span className="w-2.5 h-2.5 rounded-full bg-gray-500 mr-2"></span>
-                            <span>Completed</span>
-                          </span>
-                        )}
-                      </p>
-                    </motion.div>
-                    
-                    <div className="pt-2 space-y-3">
-                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                        <Link 
-                          to="/donate" 
-                          className="w-full flex items-center justify-center px-4 py-3 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-lg hover:from-orange-600 hover:to-orange-700 transition-all shadow-md hover:shadow-lg text-center font-medium text-sm"
-                        >
-                          <Heart className="w-4 h-4 mr-2" />
-                          Support This Project
-                        </Link>
-                      </motion.div>
-                      
-                      <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
-                        <Link 
-                          to="/contact" 
-                          className="w-full flex items-center justify-center px-4 py-3 border-2 border-orange-500 text-orange-600 rounded-lg hover:bg-orange-50 transition-colors text-center font-medium text-sm"
-                        >
-                          <Mail className="w-4 h-4 mr-2" />
-                          Contact Us
-                        </Link>
-                      </motion.div>
+                    <div>
+                      <h4 className="font-medium text-gray-900">Location</h4>
+                      <p className="text-gray-600">{project.location}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-medium text-gray-900">Beneficiaries</h4>
+                      <p className="text-gray-600">{project.beneficiaries}</p>
+                    </div>
+                    {project.budget && (
+                      <div>
+                        <h4 className="font-medium text-gray-900">Budget</h4>
+                        <p className="text-gray-600">{project.budget}</p>
+                      </div>
+                    )}
+                  </div>
+                </div>
+                
+                {project.partners && project.partners.length > 0 && (
+                  <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-200">
+                    <h3 className="text-xl font-bold text-gray-900 mb-4">Project Partners</h3>
+                    <div className="space-y-4">
+                      {project.partners.map((partner, index) => (
+                        <div key={index} className="flex items-center">
+                          <div className="bg-gray-200 border-2 border-dashed rounded-xl w-16 h-16 flex items-center justify-center mr-4" />
+                          <div>
+                            <h4 className="font-medium text-gray-900">{partner.name}</h4>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                </motion.div>
-                
-
+                )}
               </motion.div>
             </div>
             
@@ -444,10 +363,10 @@ const ProjectDetails = () => {
                 <div className="flex flex-col md:flex-row justify-between items-center mb-8">
                   <h2 className="text-2xl font-bold text-gray-900 mb-4 md:mb-0">Related Projects</h2>
                   <Link 
-                    to={project.status === 'upcoming' ? '/upcoming-projects' : '/current-projects'}
+                    to={project.status === 'active' ? '/current-projects' : '/completed-projects'}
                     className="text-orange-600 hover:text-orange-700 font-medium flex items-center group"
                   >
-                    View all {project.status === 'upcoming' ? 'Upcoming' : 'Current'} Projects
+                    View all {project.status === 'active' ? 'Current' : 'Completed'} Projects
                     <ArrowRight className="h-4 w-4 ml-1 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -477,7 +396,7 @@ const ProjectDetails = () => {
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                           <span className="absolute top-4 right-4 bg-white/90 text-xs font-medium px-2.5 py-1 rounded-full">
-                            {relatedProject.status === 'active' ? 'In Progress' : relatedProject.status === 'upcoming' ? 'Upcoming' : 'Completed'}
+                            {relatedProject.status === 'active' ? 'In Progress' : 'Completed'}
                           </span>
                         </div>
                         <div className="p-5">

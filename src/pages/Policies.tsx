@@ -1,51 +1,60 @@
 import Layout from '@/components/Layout';
 import Breadcrumb from '@/components/Breadcrumb';
-import { Shield, HeartHandshake, Gavel, Scale, RefreshCw, Users } from 'lucide-react';
+import { Shield, HeartHandshake, Gavel, Scale, Building, Home, BookOpen, Users, FileText } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 
 const Policies = () => {
   const policies = [
     {
-      title: 'Privacy Policy',
-      content: 'At Development Society for Poor, we are committed to protecting your privacy. We collect only the information necessary to process your donations and keep you updated about our work. We never sell or share your personal information with third parties without your consent.',
-      icon: <Shield className="w-10 h-10 text-white mb-3" />,
+      title: 'Finance Policy',
+      content: 'Ensures proper planning, budgeting, accounting and reporting of all financial transactions. It aims to maintain transparency, accountability, and legal compliance across all programs. The system helps prevent misuse of funds and ensures efficient resource allocation for project activities.',
+      icon: <Scale className="w-10 h-10 text-white mb-3" />,
       bgColor: 'bg-[#4e73df]',
-      textColor: 'text-white'
+      textColor: 'text-white',
+      link: '/policies/finance'
     },
     {
-      title: 'Donation Policy',
-      content: 'All donations made to Development Society for Poor are used to support our various programs and initiatives. We maintain complete transparency in our financial transactions and provide regular updates on how donations are being utilized. Tax exemption certificates are provided for all eligible donations.',
-      icon: <HeartHandshake className="w-10 h-10 text-white mb-3" />,
+      title: 'Non-Compliance Policy',
+      content: 'Affirms that DSP follows all government regulations and legal guidelines. The organization does not support religious or political activities and ensures grants are used only for approved projects. DSP guarantees equal support to all individuals without discrimination.',
+      icon: <Gavel className="w-10 h-10 text-white mb-3" />,
       bgColor: 'bg-[#1cc88a]',
-      textColor: 'text-white'
+      textColor: 'text-white',
+      link: '/policies/non-compliance'
     },
     {
-      title: 'Child Protection Policy',
-      content: 'We have a zero-tolerance policy for any form of child abuse or exploitation. All staff and volunteers undergo thorough background checks and training to ensure the safety and well-being of the children we serve. We are committed to creating a safe environment for all beneficiaries.',
-      icon: <Users className="w-10 h-10 text-white mb-3" />,
+      title: 'Construction / Building Policy',
+      content: 'Provides guidelines for construction, renovation, and maintenance projects. It ensures safety, sustainability, cost-effectiveness, and compliance with engineering and ethical standards. DSP prioritizes durable structures with proper planning, transparency, and accountability throughout execution.',
+      icon: <Building className="w-10 h-10 text-white mb-3" />,
       bgColor: 'bg-[#f6c23e]',
       textColor: 'text-white'
     },
     {
-      title: 'Transparency & Accountability',
-      content: 'We maintain the highest standards of financial accountability and transparency. Our financial statements are audited annually by independent auditors, and we publish annual reports detailing our activities, financials, and impact. We welcome questions about our work and financials.',
-      icon: <Scale className="w-10 h-10 text-white mb-3" />,
+      title: 'Housing Policy',
+      content: 'Focuses on providing affordable and sustainable housing for vulnerable communities. It addresses challenges like inadequate shelter, disaster vulnerability, and lack of basic amenities. DSP works with communities and government schemes to ensure safe, dignified living conditions.',
+      icon: <Home className="w-10 h-10 text-white mb-3" />,
       bgColor: 'bg-[#e74a3b]',
       textColor: 'text-white'
     },
     {
-      title: 'Refund & Cancellation Policy',
-      content: 'Donations made to Development Society for Poor are non-refundable. In case of any technical issues or errors in processing your donation, please contact us immediately. We will make every effort to resolve the issue promptly and to your satisfaction.',
-      icon: <RefreshCw className="w-10 h-10 text-white mb-3" />,
+      title: 'Child Protection Policy',
+      content: 'Safeguards children\'s rights and ensures they live in safety, dignity, and care. It prevents abuse, neglect, exploitation, and discrimination while supporting their growth and development. DSP commits to protecting every child and providing equal opportunities.',
+      icon: <Shield className="w-10 h-10 text-white mb-3" />,
       bgColor: 'bg-[#36b9cc]',
       textColor: 'text-white'
     },
     {
-      title: 'Volunteer Policy',
-      content: 'We welcome volunteers who share our vision and values. All volunteers are required to complete an application process, which may include background checks and interviews. We provide orientation and training to ensure volunteers are well-prepared for their roles.',
-      icon: <Gavel className="w-10 h-10 text-white mb-3" />,
+      title: 'Equal Opportunity Policy',
+      content: 'Promotes a workplace free from discrimination, harassment, or inequality. Every employee is treated fairly regardless of gender, caste, race, religion, disability, or background. DSP ensures inclusiveness, equal treatment, and a safe environment for all staff and partners.',
+      icon: <Users className="w-10 h-10 text-white mb-3" />,
       bgColor: 'bg-[#5a5c69]',
+      textColor: 'text-white'
+    },
+    {
+      title: 'Education Policy',
+      content: 'Ensures equal access to quality education for marginalized communities. It promotes literacy, skill development, vocational learning, women\'s education, and inclusive learning for differently-abled children. DSP aims to empower individuals through education for social and economic growth.',
+      icon: <BookOpen className="w-10 h-10 text-white mb-3" />,
+      bgColor: 'bg-[#8e44ad]',
       textColor: 'text-white'
     }
   ];
@@ -60,7 +69,7 @@ const Policies = () => {
             <h1 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Policies</h1>
             <div className="w-24 h-1.5 bg-gradient-to-r from-[#4e73df] to-[#1cc88a] rounded-full mx-auto mb-6"></div>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">
-              At Development Society for Poor, we are committed to maintaining the highest standards of <span className="font-semibold text-[#4e73df]">transparency</span>, <span className="font-semibold text-[#1cc88a]">accountability</span>, and <span className="font-semibold text-[#f6c23e]">ethical practices</span> in all our operations.
+              DSP is committed to excellence in all our operations, guided by our core principles of <span className="font-semibold text-[#4e73df]">transparency</span>, <span className="font-semibold text-[#1cc88a]">accountability</span>, and <span className="font-semibold text-[#f6c23e]">inclusive development</span>. Our policies reflect our dedication to creating sustainable impact in the communities we serve.
             </p>
           </div>
           
@@ -76,7 +85,13 @@ const Policies = () => {
                     {policy.icon}
                   </div>
                   <h3 className="text-xl font-bold mb-3">{policy.title}</h3>
-                  <p className="leading-relaxed opacity-90">{policy.content}</p>
+                  <p className="leading-relaxed opacity-90 mb-6 flex-grow">{policy.content}</p>
+                  <Link
+                    to={policy.link || '#'}
+                    className={`mt-auto px-6 py-2 rounded-full bg-white/20 hover:bg-white/30 text-white font-medium transition-colors duration-200 border border-white/30 hover:border-white/50 inline-flex items-center justify-center`}
+                  >
+                    View Policy
+                  </Link>
                 </div>
               </div>
             ))}

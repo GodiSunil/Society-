@@ -1,4 +1,3 @@
-
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -25,11 +24,15 @@ import Policies from './pages/Policies';
 import AnnualReports from './pages/AnnualReports';
 import AuditReports from './pages/AuditReports';
 import CurrentProjects from './pages/CurrentProjects';
-import UpcomingProjects from './pages/UpcomingProjects';
 import CompletedProjects from './pages/CompletedProjects';
 import ProjectDetails from './pages/ProjectDetails';
 import NotFound from './pages/NotFound';
 import Donate from './pages/Donate';
+import DetailedAnnualReport from './pages/DetailedAnnualReport';
+import AnnualReport2018_2022 from './pages/AnnualReport2018_2022';
+import AnnualReport2024_2025 from './pages/AnnualReport2024_2025';
+import FinancePolicy from './pages/policies/FinancePolicy';
+import NonCompliancePolicy from './pages/policies/NonCompliancePolicy';
 
 const queryClient = new QueryClient();
 
@@ -58,11 +61,15 @@ const App = () => (
           <Route path="/executive-body" element={<ExecutiveBody />} />
           <Route path="/president-message" element={<PresidentMessage />} />
           <Route path="/policies" element={<Policies />} />
+          <Route path="/policies/finance" element={<FinancePolicy />} />
+          <Route path="/policies/non-compliance" element={<NonCompliancePolicy />} />
           <Route path="/annual-reports" element={<AnnualReports />} />
+          <Route path="/annual-report/detail" element={<DetailedAnnualReport />} />
+          <Route path="/annual-report/2018-2022" element={<AnnualReport2018_2022 />} />
+          <Route path="/annual-report/2024-2025" element={<AnnualReport2024_2025 />} />
           <Route path="/audit-reports" element={<AuditReports />} />
           <Route path="/current-projects" element={<CurrentProjects />} />
           <Route path="/project/:id" element={<ProjectDetails />} />
-          <Route path="/upcoming-projects" element={<UpcomingProjects />} />
           <Route path="/completed-projects" element={<CompletedProjects />} />
           <Route path="/donate" element={<Donate />} />
           <Route path="*" element={<NotFound />} />

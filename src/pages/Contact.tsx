@@ -32,7 +32,7 @@ const Contact = () => {
                     <h3 className="font-semibold text-lg text-gray-800 mb-1">Phone Numbers</h3>
                     <div className="space-y-1">
                       <a href="tel:+919985512014" className="block text-gray-600 hover:text-[#f15a24] transition-colors">+91 99855 12014</a>
-                      <a href="tel:+918632265652" className="block text-gray-600 hover:text-[#f15a24] transition-colors">+91 863 - 2265652</a>
+                      <a href="tel:+918632265652" className="block text-gray-600 hover:text-[#f15a24] transition-colors">+91 8xxxxxxxxxx</a>
                     </div>
                   </div>
                 </div>
@@ -62,7 +62,7 @@ const Contact = () => {
                     <address className="not-italic text-gray-600">
                       Development Society for Poor (DSP)<br />
                       Rentachintal Post & Mandal<br />
-                      Guntur 522 421<br />
+                      palnadu 522 421<br />
                       Andhra Pradesh, India
                     </address>
                   </div>
@@ -79,7 +79,7 @@ const Contact = () => {
                     <ul className="space-y-1 text-gray-600">
                       <li className="flex justify-between">
                         <span>Monday - Friday</span>
-                        <span>9:00 AM - 6:00 PM</span>
+                        <span>9:00 AM - 5:00 PM</span>
                       </li>
                       <li className="flex justify-between">
                         <span>Saturday</span>
