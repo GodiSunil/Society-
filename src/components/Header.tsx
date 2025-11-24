@@ -1,12 +1,18 @@
-import { useState } from 'react';
+ 
+import { useState, useEffect } from 'react';
 import { Phone, Mail, Facebook, Youtube, Search, Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
+  const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const location = useLocation();
+  const [activeLink, setActiveLink] = useState('');
+
+  useEffect(() => {
+    setActiveLink(location.pathname);
+  }, [location]);
 
   const toggleDropdown = (dropdown: string) => {
     setOpenDropdown(openDropdown === dropdown ? null : dropdown);
@@ -14,6 +20,10 @@ const Header = () => {
 
   // State to manage mobile menu open/close
   const [isContactOpen, setIsContactOpen] = useState(false);
+  
+  const isActive = (path: string) => {
+    return activeLink === path ? 'text-[#f15a24]' : 'text-gray-800 hover:text-[#f15a24]';
+  };
 
   return (
     <>
@@ -37,6 +47,19 @@ const Header = () => {
                 <Mail size={14} className="flex-shrink-0" />
                 <span>dsociety2005@gmail.com</span>
               </a>
+              
+              <div className="flex items-center gap-3 border-l border-white/20 pl-4">
+                <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" 
+                   className="hover:text-white/80 transition-colors flex items-center gap-1" 
+                   aria-label="Facebook">
+                  <Facebook size={16} className="w-4 h-4" />
+                </a>
+                <a href="https://youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" 
+                   className="hover:text-white/80 transition-colors flex items-center gap-1" 
+                   aria-label="YouTube">
+                  <Youtube size={16} className="w-4 h-4" />
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -57,44 +80,45 @@ const Header = () => {
 
             {/* Desktop Navigation */}
             <nav className="hidden lg:flex items-center space-x-6 xl:space-x-8 font-medium">
-              <Link to="/" className={`text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium ${location.pathname === '/' ? 'text-[#f15a24] border-b-2 border-[#f15a24]' : ''}`}>
+              <Link to="/" className={`${isActive('/')} transition-colors duration-200 font-medium`}>
                 HOME
               </Link>
               
               <div className="relative group">
-                <button className={`flex items-center text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium ${['/about', '/about/vision-mission', '/executive-body', '/president-message', '/policies', '/annual-reports', '/audit-reports'].includes(location.pathname) ? 'text-[#f15a24] border-b-2 border-[#f15a24]' : ''}`}>
+                <button className={`flex items-center ${activeLink.startsWith('/about') || activeLink.startsWith('/executive-body') || activeLink.startsWith('/president-message') || activeLink.startsWith('/policies') || activeLink.startsWith('/annual-reports') || activeLink.startsWith('/audit-reports') ? 'text-[#f15a24]' : 'text-gray-800 hover:text-[#f15a24]'} transition-colors duration-200 font-medium`}>
                   ABOUT US <ChevronDown size={16} className="ml-1" />
                 </button>
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-64 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
-                  <Link to="/about" className={`block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150 ${location.pathname === '/about' ? 'text-[#f15a24] font-bold' : ''}`}>About the Organization</Link>
-                  <Link to="/about/vision-mission" className={`block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150 ${location.pathname === '/about/vision-mission' ? 'text-[#f15a24] font-bold' : ''}`}>Vision & Mission</Link>
-                  <Link to="/executive-body" className={`block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150 ${location.pathname === '/executive-body' ? 'text-[#f15a24] font-bold' : ''}`}>Executive Body</Link>
-                  <Link to="/president-message" className={`block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150 ${location.pathname === '/president-message' ? 'text-[#f15a24] font-bold' : ''}`}>President's Message</Link>
-                  <Link to="/policies" className={`block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150 ${location.pathname === '/policies' ? 'text-[#f15a24] font-bold' : ''}`}>Our Policies</Link>
-                  <Link to="/annual-reports" className={`block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150 ${location.pathname === '/annual-reports' ? 'text-[#f15a24] font-bold' : ''}`}>Annual Reports</Link>
-                  <Link to="/audit-reports" className={`block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150 ${location.pathname === '/audit-reports' ? 'text-[#f15a24] font-bold' : ''}`}>Audit Reports</Link>
+                  <Link to="/about" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">About the Organization</Link>
+                  <Link to="/about/vision-mission" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Vision & Mission</Link>
+                  <Link to="/executive-body" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Executive Body</Link>
+                  <Link to="/president-message" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">President's Message</Link>
+                  <Link to="/policies" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Our Policies</Link>
+                  <Link to="/annual-reports" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Annual Reports</Link>
+                  <Link to="/audit-reports" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Audit Reports</Link>
                 </div>
               </div>
 
-              <Link to="/services" className={`text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium ${location.pathname === '/services' || location.pathname.startsWith('/service/') ? 'text-[#f15a24] border-b-2 border-[#f15a24]' : ''}`}>
+              <Link to="/services" className={`${isActive('/services')} transition-colors duration-200 font-medium`}>
                 OUR SERVICES
               </Link>
 
               <div className="relative group">
-                <button className={`flex items-center text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium ${['/current-projects', '/completed-projects'].includes(location.pathname) ? 'text-[#f15a24] border-b-2 border-[#f15a24]' : ''}`}>
+                <button className={`flex items-center ${activeLink.startsWith('/programmes') || activeLink.startsWith('/current-projects') || activeLink.startsWith('/upcoming-projects') || activeLink.startsWith('/completed-projects') ? 'text-[#f15a24]' : 'text-gray-800 hover:text-[#f15a24]'} transition-colors duration-200 font-medium`}>
                   PROGRAMMES <ChevronDown size={16} className="ml-1" />
                 </button>
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
-                  <Link to="/current-projects" className={`block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150 ${location.pathname === '/current-projects' ? 'text-[#f15a24] font-bold' : ''}`}>Current Projects</Link>
-                  <Link to="/completed-projects" className={`block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150 ${location.pathname === '/completed-projects' ? 'text-[#f15a24] font-bold' : ''}`}>Completed Projects</Link>
+                  <Link to="/current-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Current Projects</Link>
+                  <Link to="/upcoming-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Upcoming Projects</Link>
+                  <Link to="/completed-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Completed Projects</Link>
                 </div>
               </div>
 
-              <Link to="/gallery" className={`text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium ${location.pathname === '/gallery' ? 'text-[#f15a24] border-b-2 border-[#f15a24]' : ''}`}>
+              <Link to="/gallery" className={`${isActive('/gallery')} transition-colors duration-200 font-medium`}>
                 GALLERY
               </Link>
               
-              <Link to="/contact" className={`text-gray-800 hover:text-[#f15a24] transition-colors duration-200 font-medium ${location.pathname === '/contact' ? 'text-[#f15a24] border-b-2 border-[#f15a24]' : ''}`}>
+              <Link to="/contact" className={`${isActive('/contact')} transition-colors duration-200 font-medium`}>
                 CONTACT
               </Link>
               
@@ -131,13 +155,25 @@ const Header = () => {
                   <Mail size={16} />
                   <a href="mailto:dsociety2005@gmail.com" className="hover:underline">dsociety2005@gmail.com</a>
                 </div>
+                <div className="flex items-center gap-4 pt-2">
+                  <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" 
+                     className="hover:text-white/80 transition-colors" 
+                     aria-label="Facebook">
+                    <Facebook size={20} />
+                  </a>
+                  <a href="https://youtube.com/yourchannel" target="_blank" rel="noopener noreferrer" 
+                     className="hover:text-white/80 transition-colors" 
+                     aria-label="YouTube">
+                    <Youtube size={20} />
+                  </a>
+                </div>
               </div>
             </div>
             
             <div className="py-4 space-y-1">
               <Link 
                 to="/" 
-                className={`block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 ${location.pathname === '/' ? 'text-[#f15a24] font-bold' : ''}`}
+                className="block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 HOME
@@ -146,26 +182,26 @@ const Header = () => {
               <div className="border-t border-gray-100">
                 <button
                   onClick={() => toggleDropdown('about')}
-                  className={`flex items-center justify-between w-full px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 text-left ${['/about', '/about/vision-mission', '/executive-body', '/president-message', '/policies', '/annual-reports', '/audit-reports'].includes(location.pathname) ? 'text-[#f15a24] font-bold' : ''}`}
+                  className="flex items-center justify-between w-full px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 text-left"
                 >
                   ABOUT US <ChevronDown size={16} className={`transition-transform duration-200 ${openDropdown === 'about' ? 'rotate-180' : ''}`} />
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${openDropdown === 'about' ? 'max-h-96' : 'max-h-0'}`}>
                   <div className="pl-8 space-y-1 bg-gray-50">
-                    <Link to="/about" className={`block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150 ${location.pathname === '/about' ? 'text-[#f15a24] font-bold' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>About the Organization</Link>
-                    <Link to="/about/vision-mission" className={`block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150 ${location.pathname === '/about/vision-mission' ? 'text-[#f15a24] font-bold' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Vision & Mission</Link>
-                    <Link to="/executive-body" className={`block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150 ${location.pathname === '/executive-body' ? 'text-[#f15a24] font-bold' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Executive Body</Link>
-                    <Link to="/president-message" className={`block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150 ${location.pathname === '/president-message' ? 'text-[#f15a24] font-bold' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>President's Message</Link>
-                    <Link to="/policies" className={`block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150 ${location.pathname === '/policies' ? 'text-[#f15a24] font-bold' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Our Policies</Link>
-                    <Link to="/annual-reports" className={`block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150 ${location.pathname === '/annual-reports' ? 'text-[#f15a24] font-bold' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Annual Reports</Link>
-                    <Link to="/audit-reports" className={`block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150 ${location.pathname === '/audit-reports' ? 'text-[#f15a24] font-bold' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Audit Reports</Link>
+                    <Link to="/about" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>About the Organization</Link>
+                    <Link to="/about/vision-mission" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Vision & Mission</Link>
+                    <Link to="/executive-body" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Executive Body</Link>
+                    <Link to="/president-message" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>President's Message</Link>
+                    <Link to="/policies" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Our Policies</Link>
+                    <Link to="/annual-reports" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Annual Reports</Link>
+                    <Link to="/audit-reports" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Audit Reports</Link>
                   </div>
                 </div>
               </div>
 
               <Link 
                 to="/services" 
-                className={`block px-6 py-3 hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100 ${location.pathname === '/services' || location.pathname.startsWith('/service/') ? 'text-[#f15a24] font-bold' : 'text-gray-800'}`}
+                className="block px-6 py-3 text-[#f15a24] hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 OUR SERVICES
@@ -174,21 +210,22 @@ const Header = () => {
               <div className="border-t border-gray-100">
                 <button
                   onClick={() => toggleDropdown('programmes')}
-                  className={`flex items-center justify-between w-full px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 text-left ${['/current-projects', '/completed-projects'].includes(location.pathname) ? 'text-[#f15a24] font-bold' : ''}`}
+                  className="flex items-center justify-between w-full px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 text-left"
                 >
                   PROGRAMMES <ChevronDown size={16} className={`transition-transform duration-200 ${openDropdown === 'programmes' ? 'rotate-180' : ''}`} />
                 </button>
                 <div className={`overflow-hidden transition-all duration-300 ${openDropdown === 'programmes' ? 'max-h-96' : 'max-h-0'}`}>
                   <div className="pl-8 space-y-1 bg-gray-50">
-                    <Link to="/current-projects" className={`block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150 ${location.pathname === '/current-projects' ? 'text-[#f15a24] font-bold' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Current Projects</Link>
-                    <Link to="/completed-projects" className={`block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150 ${location.pathname === '/completed-projects' ? 'text-[#f15a24] font-bold' : ''}`} onClick={() => setIsMobileMenuOpen(false)}>Completed Projects</Link>
+                    <Link to="/current-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Current Projects</Link>
+                    <Link to="/upcoming-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Upcoming Projects</Link>
+                    <Link to="/completed-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Completed Projects</Link>
                   </div>
                 </div>
               </div>
 
               <Link 
                 to="/gallery" 
-                className={`block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100 ${location.pathname === '/gallery' ? 'text-[#f15a24] font-bold' : ''}`}
+                className="block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 GALLERY
@@ -196,7 +233,7 @@ const Header = () => {
               
               <Link 
                 to="/contact" 
-                className={`block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100 ${location.pathname === '/contact' ? 'text-[#f15a24] font-bold' : ''}`}
+                className="block px-6 py-3 text-gray-800 hover:bg-gray-50 font-medium transition-colors duration-200 border-t border-gray-100"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 CONTACT
