@@ -1,5 +1,6 @@
 import Layout from '@/components/Layout';
 import Breadcrumb from '@/components/Breadcrumb';
+import { User, User2, Mail } from 'lucide-react';
 
 const ExecutiveBody = () => {
   const executiveMembers = [
@@ -77,13 +78,24 @@ const ExecutiveBody = () => {
               <div key={member.id} className="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
                 <div className="p-6 flex-grow">
                   <div className="flex flex-col items-center mb-4">
-                    <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-orange-100 mb-6">
-                      <img 
-                        src={member.image} 
-                        alt={member.name}
-                        className="w-full h-full object-cover"
-                        loading="lazy"
-                      />
+                    <div className="w-48 h-48 md:w-56 md:h-56 rounded-full overflow-hidden border-4 border-orange-100 mb-6 bg-orange-50 flex items-center justify-center">
+                      {member.image && member.image !== '/images/default.jpg' ? (
+                        <img 
+                          src={member.image} 
+                          alt={member.name}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="flex flex-col items-center justify-center p-4 text-orange-400">
+                          {member.name.startsWith('Ms.') || member.name.includes('Kumari') ? (
+                            <User2 className="w-24 h-24" />
+                          ) : (
+                            <User className="w-24 h-24" />
+                          )}
+                          <span className="mt-2 text-sm font-medium text-gray-500">No photo available</span>
+                        </div>
+                      )}
                     </div>
                     <h3 className="text-xl font-bold text-gray-900 text-center">{member.name}</h3>
                     <p className="text-orange-500 font-medium">{member.position}</p>
@@ -91,8 +103,9 @@ const ExecutiveBody = () => {
                   <p className="text-gray-600 mb-4">{member.bio}</p>
                   <a 
                     href={`mailto:${member.email}`}
-                    className="inline-block text-orange-500 hover:underline"
+                    className="inline-flex items-center text-orange-500 hover:underline"
                   >
+                    <Mail className="w-4 h-4 mr-2" />
                     {member.email}
                   </a>
                 </div>
