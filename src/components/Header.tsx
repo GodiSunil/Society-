@@ -48,6 +48,7 @@ const Header = () => {
                 <span>dsociety2005@gmail.com</span>
               </a>
               
+              {/* Social Icons Hidden as per request
               <div className="flex items-center gap-3 border-l border-white/20 pl-4">
                 <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" 
                    className="hover:text-white/80 transition-colors flex items-center gap-1" 
@@ -60,6 +61,7 @@ const Header = () => {
                   <Youtube size={16} className="w-4 h-4" />
                 </a>
               </div>
+              */}
             </div>
           </div>
         </div>
@@ -104,12 +106,11 @@ const Header = () => {
               </Link>
 
               <div className="relative group">
-                <button className={`flex items-center ${activeLink.startsWith('/programmes') || activeLink.startsWith('/current-projects') || activeLink.startsWith('/upcoming-projects') || activeLink.startsWith('/completed-projects') ? 'text-[#f15a24]' : 'text-gray-800 hover:text-[#f15a24]'} transition-colors duration-200 font-medium`}>
+                <button className={`flex items-center ${activeLink.startsWith('/programmes') || activeLink.startsWith('/current-projects') || activeLink.startsWith('/completed-projects') ? 'text-[#f15a24]' : 'text-gray-800 hover:text-[#f15a24]'} transition-colors duration-200 font-medium`}>
                   PROGRAMMES <ChevronDown size={16} className="ml-1" />
                 </button>
                 <div className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-56 bg-white shadow-xl rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
                   <Link to="/current-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Current Projects</Link>
-                  <Link to="/upcoming-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Upcoming Projects</Link>
                   <Link to="/completed-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-50 transition-colors duration-150">Completed Projects</Link>
                 </div>
               </div>
@@ -155,6 +156,7 @@ const Header = () => {
                   <Mail size={16} />
                   <a href="mailto:dsociety2005@gmail.com" className="hover:underline">dsociety2005@gmail.com</a>
                 </div>
+                {/* Social Icons Hidden as per request
                 <div className="flex items-center gap-4 pt-2">
                   <a href="https://facebook.com/yourpage" target="_blank" rel="noopener noreferrer" 
                      className="hover:text-white/80 transition-colors" 
@@ -167,6 +169,7 @@ const Header = () => {
                     <Youtube size={20} />
                   </a>
                 </div>
+                */}
               </div>
             </div>
             
@@ -217,7 +220,6 @@ const Header = () => {
                 <div className={`overflow-hidden transition-all duration-300 ${openDropdown === 'programmes' ? 'max-h-96' : 'max-h-0'}`}>
                   <div className="pl-8 space-y-1 bg-gray-50">
                     <Link to="/current-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Current Projects</Link>
-                    <Link to="/upcoming-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Upcoming Projects</Link>
                     <Link to="/completed-projects" className="block px-4 py-3 text-gray-700 hover:bg-gray-100 transition-colors duration-150" onClick={() => setIsMobileMenuOpen(false)}>Completed Projects</Link>
                   </div>
                 </div>
