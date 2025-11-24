@@ -27,35 +27,40 @@ const Policies = () => {
       content: 'Provides guidelines for construction, renovation, and maintenance projects. It ensures safety, sustainability, cost-effectiveness, and compliance with engineering and ethical standards. DSP prioritizes durable structures with proper planning, transparency, and accountability throughout execution.',
       icon: <Building className="w-10 h-10 text-white mb-3" />,
       bgColor: 'bg-[#f6c23e]',
-      textColor: 'text-white'
+      textColor: 'text-white',
+      link: '/policies/construction'
     },
     {
       title: 'Housing Policy',
       content: 'Focuses on providing affordable and sustainable housing for vulnerable communities. It addresses challenges like inadequate shelter, disaster vulnerability, and lack of basic amenities. DSP works with communities and government schemes to ensure safe, dignified living conditions.',
       icon: <Home className="w-10 h-10 text-white mb-3" />,
       bgColor: 'bg-[#e74a3b]',
-      textColor: 'text-white'
+      textColor: 'text-white',
+      link: '/policies/housing'
     },
     {
       title: 'Child Protection Policy',
       content: 'Safeguards children\'s rights and ensures they live in safety, dignity, and care. It prevents abuse, neglect, exploitation, and discrimination while supporting their growth and development. DSP commits to protecting every child and providing equal opportunities.',
       icon: <Shield className="w-10 h-10 text-white mb-3" />,
       bgColor: 'bg-[#36b9cc]',
-      textColor: 'text-white'
+      textColor: 'text-white',
+      link: '/policies/child-protection'
     },
     {
       title: 'Equal Opportunity Policy',
       content: 'Promotes a workplace free from discrimination, harassment, or inequality. Every employee is treated fairly regardless of gender, caste, race, religion, disability, or background. DSP ensures inclusiveness, equal treatment, and a safe environment for all staff and partners.',
       icon: <Users className="w-10 h-10 text-white mb-3" />,
       bgColor: 'bg-[#5a5c69]',
-      textColor: 'text-white'
+      textColor: 'text-white',
+      link: '/policies/equal-opportunity'
     },
     {
       title: 'Education Policy',
       content: 'Ensures equal access to quality education for marginalized communities. It promotes literacy, skill development, vocational learning, women\'s education, and inclusive learning for differently-abled children. DSP aims to empower individuals through education for social and economic growth.',
       icon: <BookOpen className="w-10 h-10 text-white mb-3" />,
       bgColor: 'bg-[#8e44ad]',
-      textColor: 'text-white'
+      textColor: 'text-white',
+      link: '/policies/education'
     }
   ];
 

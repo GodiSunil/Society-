@@ -68,22 +68,29 @@ const AnnualReports = () => {
                   </div>
                   
                   {report.hasDetailedView ? (
-                    <div className="flex flex-col gap-2">
-                      <a
-                        href={report.downloadLink}
-                        className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#f15a24] hover:bg-[#d14619] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f15a24]"
-                        download
+                    <Link
+                      to={report.viewReportLink || "/annual-report/detail"}
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-[#f15a24] to-[#ff7e5f] hover:from-[#e04f1a] hover:to-[#f15a24] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f15a24] transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
+                    >
+                      <span className="relative">
+                        <span className="absolute -inset-1 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                        <span className="relative">View Report</span>
+                      </span>
+                      <svg 
+                        className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24" 
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <Download className="w-4 h-4" />
-                        Download PDF
-                      </a>
-                      <Link
-                        to={report.viewReportLink || "/annual-report/detail"}
-                        className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f15a24]"
-                      >
-                        View Report
-                      </Link>
-                    </div>
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={2} 
+                          d="M14 5l7 7m0 0l-7 7m7-7H3" 
+                        />
+                      </svg>
+                    </Link>
                   ) : (
                     <a
                       href={report.downloadLink}

@@ -33,6 +33,11 @@ import AnnualReport2018_2022 from './pages/AnnualReport2018_2022';
 import AnnualReport2024_2025 from './pages/AnnualReport2024_2025';
 import FinancePolicy from './pages/policies/FinancePolicy';
 import NonCompliancePolicy from './pages/policies/NonCompliancePolicy';
+import ConstructionPolicy from './pages/policies/ConstructionPolicy';
+import HousingPolicy from './pages/policies/HousingPolicy';
+import ChildProtectionPolicy from './pages/policies/ChildProtectionPolicy';
+import EqualOpportunityPolicy from './pages/policies/EqualOpportunityPolicy';
+import EducationPolicy from './pages/policies/EducationPolicy';
 
 const queryClient = new QueryClient();
 
@@ -63,6 +68,11 @@ const App = () => (
           <Route path="/policies" element={<Policies />} />
           <Route path="/policies/finance" element={<FinancePolicy />} />
           <Route path="/policies/non-compliance" element={<NonCompliancePolicy />} />
+          <Route path="/policies/construction" element={<ConstructionPolicy />} />
+          <Route path="/policies/housing" element={<HousingPolicy />} />
+          <Route path="/policies/child-protection" element={<ChildProtectionPolicy />} />
+          <Route path="/policies/equal-opportunity" element={<EqualOpportunityPolicy />} />
+          <Route path="/policies/education" element={<EducationPolicy />} />
           <Route path="/annual-reports" element={<AnnualReports />} />
           <Route path="/annual-report/detail" element={<DetailedAnnualReport />} />
           <Route path="/annual-report/2018-2022" element={<AnnualReport2018_2022 />} />
