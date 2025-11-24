@@ -48,15 +48,15 @@ const Donate = () => {
                     </div>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 border-b border-gray-200">
                       <span className="font-medium text-gray-700">Account Number:</span>
-                      <span className="mt-1 sm:mt-0 font-mono">1234567890123456</span>
+                      <span className="mt-1 sm:mt-0 font-mono">37287854236</span>
                     </div>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 border-b border-gray-200">
                       <span className="font-medium text-gray-700">IFSC Code:</span>
-                      <span className="mt-1 sm:mt-0 font-mono">SBIN0002499</span>
+                      <span className="mt-1 sm:mt-0 font-mono">SBIN0018902</span>
                     </div>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2 border-b border-gray-200">
                       <span className="font-medium text-gray-700">Branch:</span>
-                      <span className="mt-1 sm:mt-0">New Delhi Main Branch</span>
+                      <span className="mt-1 sm:mt-0">DSP Local SBI, Rentachintala</span>
                     </div>
                     <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center py-2">
                       <span className="font-medium text-gray-700">Account Type:</span>
