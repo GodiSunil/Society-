@@ -4,96 +4,141 @@ import { X, ChevronLeft, ChevronRight, Maximize2, Minimize2 } from 'lucide-react
 import Layout from '@/components/Layout';
 import Breadcrumb from '@/components/Breadcrumb';
 
+type ImageCategory = 'all' | 'events' | 'meetings' | 'celebrations' | 'others';
+
 interface GalleryImage {
   id: number;
   src: string;
-
+  category: Exclude<ImageCategory, 'all'>;
+  title?: string;
 }
 
 const GALLERY_IMAGES: GalleryImage[] = [
   {
     id: 1,
-    src: "/images/trust1.webp"
+    src: "/images/trust1.webp",
+    category: 'events',
+    title: 'Annual Sports Day'
   },
   {
     id: 2,
-    src: "/images/trust2.webp"
+    src: "/images/trust2.webp",
+    category: 'meetings',
+    title: 'Committee Meeting'
   },
   {
     id: 3,
-    src: "/images/trust3.webp"
+    src: "/images/trust3.webp",
+    category: 'celebrations',
+    title: 'Festival Celebration'
   },
   {
     id: 4,
-    src: "/images/trust4.webp"
+    src: "/images/trust4.webp",
+    category: 'events',
+    title: 'Cultural Event'
   },
   {
     id: 5,
-    src: "/images/trust5.webp"
+    src: "/images/trust5.webp",
+    category: 'meetings',
+    title: 'General Body Meeting'
   },
   {
     id: 6,
-    src: "/images/trust6.webp"
+    src: "/images/trust6.webp",
+    category: 'celebrations',
+    title: 'New Year Party'
   },
   {
     id: 7,
-    src: "/images/trust7.webp"
+    src: "/images/trust7.webp",
+    category: 'others',
+    title: 'Community Service'
   },
   {
     id: 8,
-    src: "/images/trust8.webp"
+    src: "/images/trust8.webp",
+    category: 'events',
+    title: 'Annual Day'
   },
   {
     id: 9,
-    src: "/images/trust9.webp"
+    src: "/images/trust9.webp",
+    category: 'meetings',
+    title: 'AGM 2023'
   },
   {
     id: 10,
-    src: "/images/trust10.webp"
+    src: "/images/trust10.webp",
+    category: 'celebrations',
+    title: 'Diwali Celebration'
   },
   {
     id: 11,
-    src: "/images/trust11.webp"
+    src: "/images/trust11.webp",
+    category: 'others',
+    title: 'Garden View'
   },
   {
     id: 12,
-    src: "/images/trust12.webp"
+    src: "/images/trust12.webp",
+    category: 'events',
+    title: 'Sports Competition'
   },
   {
     id: 13,
-    src: "/images/trust13.webp"
+    src: "/images/trust13.webp",
+    category: 'meetings',
+    title: 'Budget Meeting'
   },
   {
     id: 14,
-    src: "/images/trust14.webp"
+    src: "/images/trust14.webp",
+    category: 'celebrations',
+    title: 'Holi Celebration'
   },
   {
     id: 15,
-    src: "/images/trust15.webp"
+    src: "/images/trust15.webp",
+    category: 'others',
+    title: 'Building View'
   },
   {
     id: 16,
-    src: "/images/trust16.webp"
+    src: "/images/trust16.webp",
+    category: 'events',
+    title: 'Annual Function'
   },
   {
     id: 17,
-    src: "/images/trust17.webp"
+    src: "/images/trust17.webp",
+    category: 'meetings',
+    title: 'Committee Discussion'
   },
   {
     id: 18,
-    src: "/images/trust18.webp"
+    src: "/images/trust18.webp",
+    category: 'celebrations',
+    title: 'Christmas Party'
   },
   {
     id: 19,
-    src: "/images/trust19.webp"
+    src: "/images/trust19.webp",
+    category: 'others',
+    title: 'Facility Tour'
   },
   {
     id: 20,
-    src: "/images/turst20.webp"
+    src: "/images/turst20.webp",
+    category: 'events',
+    title: 'Sports Day'
   },
   {
     id: 21,
-    src: "/images/trust21.webp"
+    src: "/images/trust21.webp",
+    category: 'meetings',
+    title: 'Town Hall'
   }
 ];
 
@@ -102,14 +147,20 @@ const Gallery = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [isAutoPlay, setIsAutoPlay] = useState(true);
+  const [selectedCategory, setSelectedCategory] = useState<ImageCategory>('all');
   const carouselRef = useRef<HTMLDivElement>(null);
   const autoPlayTimeout = useRef<NodeJS.Timeout>();
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
-  
-  // Show all images since we removed the filter
-  const filteredImages = GALLERY_IMAGES;
-  
+
+  // Filter images based on selected category
+  const filteredImages = GALLERY_IMAGES.filter(
+    image => selectedCategory === 'all' || image.category === selectedCategory
+  );
+
+  // Get unique categories from images
+  const categories = ['all', ...new Set(GALLERY_IMAGES.map(img => img.category))] as ImageCategory[];
+
   const toggleFullscreen = () => {
     if (!document.fullscreenElement) {
       document.documentElement.requestFullscreen().catch(err => {
@@ -125,11 +176,11 @@ const Gallery = () => {
   // Auto play functionality - 2 second interval
   useEffect(() => {
     if (!isAutoPlay || !selectedImage) return;
-    
+
     autoPlayTimeout.current = setInterval(() => {
       navigateImage('next');
     }, 2000); // 2 second autoplay
-    
+
     return () => {
       if (autoPlayTimeout.current) {
         clearInterval(autoPlayTimeout.current);
@@ -140,7 +191,7 @@ const Gallery = () => {
   // Handle keyboard and touch events
   useEffect(() => {
     if (!selectedImage) return;
-    
+
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         closeModal();
@@ -164,7 +215,7 @@ const Gallery = () => {
 
     window.addEventListener('keydown', handleKeyDown);
     window.addEventListener('wheel', handleWheel as EventListener, { passive: false });
-    
+
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
       window.removeEventListener('wheel', handleWheel as EventListener);
@@ -195,7 +246,7 @@ const Gallery = () => {
     setCurrentIndex(index);
     setSelectedImage(image);
     document.body.style.overflow = 'hidden';
-    
+
     // Scroll to the selected image in the carousel
     setTimeout(() => {
       if (carouselRef.current) {
@@ -219,22 +270,22 @@ const Gallery = () => {
 
   const navigateImage = (dir: 'prev' | 'next') => {
     if (!selectedImage) return;
-    
+
     // Reset autoplay timer
     if (autoPlayTimeout.current) {
       clearInterval(autoPlayTimeout.current);
     }
-    
+
     let newIndex;
     if (dir === 'next') {
       newIndex = (currentIndex + 1) % filteredImages.length;
     } else {
       newIndex = (currentIndex - 1 + filteredImages.length) % filteredImages.length;
     }
-    
+
     setCurrentIndex(newIndex);
     setSelectedImage(filteredImages[newIndex]);
-    
+
     // Scroll to the new image
     if (carouselRef.current) {
       const container = carouselRef.current;
@@ -247,7 +298,7 @@ const Gallery = () => {
         });
       }
     }
-    
+
     // Restart autoplay if it was enabled
     if (isAutoPlay) {
       autoPlayTimeout.current = setInterval(() => {
@@ -269,28 +320,45 @@ const Gallery = () => {
                 Explore our journey through these memorable moments captured in our community development initiatives.
               </p>
             </div>
-            
-            {/* Gallery Grid - Removed filter tabs */}
+
+            {/* Category Filter */}
+            <div className="flex flex-wrap justify-center gap-2 mb-8">
+              {categories.map((category) => (
+                <button
+                  key={category}
+                  onClick={() => setSelectedCategory(category)}
+                  className={`px-4 py-2 rounded-full text-sm font-medium transition-colors ${
+                    selectedCategory === category
+                      ? 'bg-primary text-white'
+                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                  }`}
+                >
+                  {category.charAt(0).toUpperCase() + category.slice(1)}
+                  {selectedCategory === category && (
+                    <span className="ml-1.5 inline-flex items-center justify-center w-5 h-5 bg-white/20 rounded-full text-xs">
+                      {GALLERY_IMAGES.filter(img => category === 'all' || img.category === category).length}
+                    </span>
+                  )}
+                </button>
+              ))}
+            </div>
+
+            {/* Gallery Grid */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 px-4">
               {filteredImages.map((image) => (
-                <motion.div 
-                  key={image.id} 
-                  className="group relative overflow-hidden rounded-xl shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
+                <motion.div
+                  key={image.id}
+                  className="relative overflow-hidden rounded-xl shadow-md transition-all duration-300 cursor-pointer"
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.3 }}
                   onClick={() => openImage(image)}
                 >
-                  <img 
-                    src={image.src} 
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
-                    loading="lazy"
+                  <img
+                    src={image.src}
+                    alt="Gallery item"
+                    className="w-full h-64 object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4">
-                    <div>
-
-                    </div>
-                  </div>
                 </motion.div>
               ))}
             </div>
