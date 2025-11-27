@@ -6,38 +6,30 @@ import { Link } from 'react-router-dom';
 const AnnualReports = () => {
   const reports = [
     {
-      year: 2025,
+      year: '2024-2025',
       title: 'Annual Report 2024-2025',
-      description: 'Comprehensive overview of our educational, health, and women development programs with detailed statistics and impact reports.',
-      fileSize: '2.4 MB',
+      description: 'Comprehensive overview of our educational programs, women development initiatives, and community projects for the period 2024-2025.',
+      fileSize: '3.2 MB',
       fileType: 'PDF',
-      downloadLink: '/reports/annual-report-2023.pdf.txt',
+      downloadLink: '/reports/annual-report-2024-2025.pdf',
       bgColor: 'bg-[#4e73df]',
       textColor: 'text-white',
       icon: <FileText className="w-6 h-6" />,
-      hasDetailedView: true
+      hasDetailedView: true,
+      viewReportLink: '/annual-report/2024-2025'
     },
-    // {
-      // year: 2020,
-      // title: 'Annual Report 2019-2020',
-      // description: 'A year of growth and expansion in our efforts to serve the underprivileged communities.',
-      // fileSize: '1.8 MB',
-      // fileType: 'PDF',
-      // downloadLink: '/reports/annual-report-2020.pdf',
-      // bgColor: 'bg-[#e74a3b]',
-      // textColor: 'text-white',
-     // icon: <FileText className="w-6 h-6" />
-    //},
     {
-      year: 2018,
+      year: '2018-2022',
       title: 'Annual Report 2018-2022',
-      description: 'A year of growth and expansion in our efforts to serve the underprivileged communities.',
-      fileSize: '1.8 MB',
+      description: 'Consolidated report covering our achievements, challenges, and financial performance from 2018 to 2022.',
+      fileSize: '4.5 MB',
       fileType: 'PDF',
-      downloadLink: '/reports/annual-report-2020.pdf',
-      bgColor: 'bg-[#e74a3b]',
+      downloadLink: '/reports/annual-report-2018-2022.pdf',
+      bgColor: 'bg-[#1cc88a]',
       textColor: 'text-white',
-      icon: <FileText className="w-6 h-6" />
+      icon: <FileText className="w-6 h-6" />,
+      hasDetailedView: true,
+      viewReportLink: '/annual-report/2018-2022'
     }
   ];
 
@@ -76,22 +68,29 @@ const AnnualReports = () => {
                   </div>
                   
                   {report.hasDetailedView ? (
-                    <div className="flex flex-col gap-2">
-                      <a
-                        href={report.downloadLink}
-                        className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-[#f15a24] hover:bg-[#d14619] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f15a24]"
-                        download
+                    <Link
+                      to={report.viewReportLink || "/annual-report/detail"}
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 border border-transparent text-sm font-medium rounded-md text-white bg-gradient-to-r from-[#f15a24] to-[#ff7e5f] hover:from-[#e04f1a] hover:to-[#f15a24] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f15a24] transition-all duration-300 ease-in-out transform hover:-translate-y-0.5 hover:shadow-md active:translate-y-0"
+                    >
+                      <span className="relative">
+                        <span className="absolute -inset-1 bg-white/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
+                        <span className="relative">View Report</span>
+                      </span>
+                      <svg 
+                        className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform duration-300" 
+                        fill="none" 
+                        stroke="currentColor" 
+                        viewBox="0 0 24 24" 
+                        xmlns="http://www.w3.org/2000/svg"
                       >
-                        <Download className="w-4 h-4" />
-                        Download PDF
-                      </a>
-                      <Link
-                        to="/annual-report/detail"
-                        className="w-full flex items-center justify-center gap-2 px-4 py-2 border border-gray-300 text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#f15a24]"
-                      >
-                        View Details
-                      </Link>
-                    </div>
+                        <path 
+                          strokeLinecap="round" 
+                          strokeLinejoin="round" 
+                          strokeWidth={2} 
+                          d="M14 5l7 7m0 0l-7 7m7-7H3" 
+                        />
+                      </svg>
+                    </Link>
                   ) : (
                     <a
                       href={report.downloadLink}
