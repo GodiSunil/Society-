@@ -4,7 +4,7 @@ import { X, ChevronLeft, ChevronRight, Maximize2, Minimize2 } from 'lucide-react
 import Layout from '@/components/Layout';
 import Breadcrumb from '@/components/Breadcrumb';
 
-type ImageCategory = 'all' | 'events' | 'meetings' | 'celebrations' | 'others';
+type ImageCategory = 'all' | 'education' | 'emergency' | 'healthcare' | 'women' | 'community' | 'others';
 
 interface GalleryImage {
   id: number;
@@ -14,131 +14,142 @@ interface GalleryImage {
 }
 
 const GALLERY_IMAGES: GalleryImage[] = [
+  // Education Category
   {
     id: 1,
-    src: "/images/trust1.webp",
-    category: 'events',
-    title: 'Annual Sports Day'
+    src: "/images/Education (1).webp",
+    category: 'education',
+    title: 'Education Initiative 1'
   },
   {
     id: 2,
-    src: "/images/trust2.webp",
-    category: 'meetings',
-    title: 'Committee Meeting'
+    src: "/images/Education (2).webp",
+    category: 'education',
+    title: 'Education Initiative 2'
   },
   {
     id: 3,
-    src: "/images/trust3.webp",
-    category: 'celebrations',
-    title: 'Festival Celebration'
+    src: "/images/Education (3).webp",
+    category: 'education',
+    title: 'Education Initiative 3'
   },
   {
     id: 4,
-    src: "/images/trust4.webp",
-    category: 'events',
-    title: 'Cultural Event'
+    src: "/images/Education (4).webp",
+    category: 'education',
+    title: 'Education Initiative 4'
   },
   {
     id: 5,
-    src: "/images/trust5.webp",
-    category: 'meetings',
-    title: 'General Body Meeting'
+    src: "/images/Education (5).webp",
+    category: 'education',
+    title: 'Education Initiative 5'
   },
+  
+  // Emergency Relief Category
   {
     id: 6,
-    src: "/images/trust6.webp",
-    category: 'celebrations',
-    title: 'New Year Party'
+    src: "/images/Emergencey Relief (1).webp",
+    category: 'emergency',
+    title: 'Emergency Relief 1'
   },
   {
     id: 7,
-    src: "/images/trust7.webp",
-    category: 'others',
-    title: 'Community Service'
+    src: "/images/Emergencey Relief (2).webp",
+    category: 'emergency',
+    title: 'Emergency Relief 2'
   },
   {
     id: 8,
-    src: "/images/trust8.webp",
-    category: 'events',
-    title: 'Annual Day'
+    src: "/images/Emergencey Relief 3.webp",
+    category: 'emergency',
+    title: 'Emergency Relief 3'
   },
+  
+  // Healthcare Category
   {
     id: 9,
-    src: "/images/trust9.webp",
-    category: 'meetings',
-    title: 'AGM 2023'
+    src: "/images/Health Care at covid time - 1.webp",
+    category: 'healthcare',
+    title: 'COVID-19 Healthcare 1'
   },
   {
     id: 10,
-    src: "/images/trust10.webp",
-    category: 'celebrations',
-    title: 'Diwali Celebration'
+    src: "/images/Health Care at covid time - 3.webp",
+    category: 'healthcare',
+    title: 'COVID-19 Healthcare 2'
   },
   {
     id: 11,
-    src: "/images/trust11.webp",
-    category: 'others',
-    title: 'Garden View'
+    src: "/images/Health Care at covid time - 4.webp",
+    category: 'healthcare',
+    title: 'COVID-19 Healthcare 3'
   },
   {
     id: 12,
-    src: "/images/trust12.webp",
-    category: 'events',
-    title: 'Sports Competition'
+    src: "/images/Health Care at covid time.webp",
+    category: 'healthcare',
+    title: 'COVID-19 Healthcare 4'
   },
   {
     id: 13,
-    src: "/images/trust13.webp",
-    category: 'meetings',
-    title: 'Budget Meeting'
+    src: "/images/Helath care  - 4.webp",
+    category: 'healthcare',
+    title: 'Healthcare Initiative 1'
   },
   {
     id: 14,
-    src: "/images/trust14.webp",
-    category: 'celebrations',
-    title: 'Holi Celebration'
+    src: "/images/Helath care  - 5.webp",
+    category: 'healthcare',
+    title: 'Healthcare Initiative 2'
   },
+  
+  // Women Development Category
   {
     id: 15,
-    src: "/images/trust15.webp",
-    category: 'others',
-    title: 'Building View'
+    src: "/images/Yound women development - 1.webp",
+    category: 'women',
+    title: 'Women Development 1'
   },
   {
     id: 16,
-    src: "/images/trust16.webp",
-    category: 'events',
-    title: 'Annual Function'
+    src: "/images/Yound women development - 2.webp",
+    category: 'women',
+    title: 'Women Development 2'
   },
+  
+  // Community Development Category
   {
     id: 17,
-    src: "/images/trust17.webp",
-    category: 'meetings',
-    title: 'Committee Discussion'
+    src: "/images/Traing center Detergent Making Photos (1).webp",
+    category: 'community',
+    title: 'Vocational Training - Detergent Making'
   },
   {
     id: 18,
-    src: "/images/trust18.webp",
-    category: 'celebrations',
-    title: 'Christmas Party'
+    src: "/images/bore well for.webp",
+    category: 'community',
+    title: 'Bore Well Installation'
   },
+  
+  // Other Categories
   {
     id: 19,
-    src: "/images/trust19.webp",
-    category: 'others',
-    title: 'Facility Tour'
+    src: "/images/community-health.jpg",
+    category: 'community',
+    title: 'Community Health Program'
   },
   {
     id: 20,
-    src: "/images/turst20.webp",
-    category: 'events',
-    title: 'Sports Day'
+    src: "/images/digital-literacy.jpg",
+    category: 'education',
+    title: 'Digital Literacy Program'
   },
   {
     id: 21,
-    src: "/images/trust21.webp",
-    category: 'meetings',
-    title: 'Town Hall'
+    src: "/images/elderly-care.jpg",
+    category: 'healthcare',
+    title: 'Elderly Care Program'
   }
 ];
 
@@ -317,7 +328,7 @@ const Gallery = () => {
               <h1 className="text-4xl font-bold text-gray-900 mb-3">Our Gallery</h1>
               <div className="w-20 h-1 bg-gradient-to-r from-[#f15a24] to-orange-400 mx-auto mb-6"></div>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Explore our journey through these memorable moments captured in our community development initiatives.
+                Explore our journey through these memorable moments captured in our community development, education, healthcare, and women empowerment initiatives.
               </p>
             </div>
 
