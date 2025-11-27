@@ -38,7 +38,7 @@ const Header = () => {
                 <span>+91 99855 12014</span>
               </a>
               <span>|</span>
-              <a href="tel:+918632265652" className="hover:underline">+91 863 - 2265652</a>
+              <a href="tel:+918632265652" className="hover:underline">+91 86088 07666</a>
             </div>
             
             {/* Email and Social */}
